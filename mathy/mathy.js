@@ -31,6 +31,5 @@ function keepy(){
     document.querySelector("#num1").value = document.querySelector("#hei").innerHTML;
     document.querySelector("#num2").value = "";
     document.querySelector("#hei").innerHTML = "";
-
 }
 

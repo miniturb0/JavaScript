@@ -5,29 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathy</title>
+    <link rel="stylesheet" href="mathy.css">
 </head>
 <script src="mathy.js"></script>
 <body>
+    <div id="Main">
     <h1>Mathy</h1>
-    <div>
-    <div>
+    
+    <div id="bars">
     <input type="text" placeholder="Main number" id="num1">
     <input type="text" placeholder="Second number" id="num2">
+    
+    <div id="griddy">
+    <div><button onclick="calcyp()" class="use">+</button></div>
+    <div><button onclick="calcym()" class="use">-</button></div>
+    <div><button onclick="calcyt()" class="use">*</button></div>
+    <div><button onclick="calcyd()" class="use">/</button></div>
     </div>
-    <button onclick="calcyp()">+</button>
-    <button onclick="calcym()">-</button>
-    <button onclick="calcyt()">*</button>
-    <button onclick="calcyd()">/</button>
     </div>
-    <button onclick="resety()">Reset</button>
-    <button onclick="keepy()">Keep Ans</button>
+    <button onclick="resety()" class="buts">Reset</button>
+    <button onclick="keepy()" class="buts">Keep Ans</button>
 
     <h1 id="hei"></h1>
-    
+    </div>
 </body>
-<style>
-    #h1{
-        font-style: italic;
-    }
-</style>
 </html>
