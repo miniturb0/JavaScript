@@ -7,14 +7,15 @@
     <title>Mathy</title>
     <link rel="stylesheet" href="mathy.css">
 </head>
+<script src="https://unpkg.com/mathjs@11.5.0/lib/browser/math.js"></script>
 <script src="mathy.js"></script>
 <body>
     <div id="Main">
     <h1>Mathy</h1>
     
     <div id="bars">
-    <input type="text" placeholder="Main number" id="num1">
-    <input type="text" placeholder="Second number" id="num2">
+    <input type="numbers" placeholder="Main number" id="num1">
+    <input type="numbers" placeholder="Second number" id="num2">
     
     <div id="griddy">
     <div><button onclick="calcyp()" class="use">+</button></div>
@@ -22,12 +23,22 @@
     <div><button onclick="calcyt()" class="use">*</button></div>
     <div><button onclick="calcyd()" class="use">/</button></div>
     <div><button onclick="calcysqrt()" class="use">sqrt</button></div>
+    <div><button onclick="calcypot()" class="use">pot</button></div>
     </div>
     </div>
     <button onclick="resety()" class="buts">Reset</button>
+    <button onclick="calcyeval()" class="buts">eval</button>
     <button onclick="keepy()" class="buts">Keep Ans</button>
 
     <h1 id="hei"></h1>
     </div>
+
+
+
+
+
 </body>
+<style>
+
+</style>
 </html>
