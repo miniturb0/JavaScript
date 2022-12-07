@@ -1,15 +1,14 @@
 function stripString(str) {
     let outStringArray = [];
-    const allowedCharacters = "0123456789+-*/^()%=<>qwertyuiopasdfghjklzxcvbnm"
+    const allowedCharacters = "0123456789+-*/^()%=<>qwertyuiopasdfghjklzxcvbnm";
     for (let i = 0; i < str.length; i++) {
         if (allowedCharacters.includes( str[i]) ) {
-            outStringArray.push(str[i])
+            outStringArray.push(str[i]);
         }
     }
-    let outString = outStringArray.join("")
+    let outString = outStringArray.join("");
     return outString
 }
-
 function calcyp(){
     let nummer1 = document.querySelector("#num1");
     let nummer2 = document.querySelector("#num2");
@@ -46,9 +45,7 @@ function calcysqrt(){
         document.querySelector("#hei").innerHTML = String(numall1);
     }else{
         document.querySelector("#hei").innerHTML = String(numall+" and "+numall1);
-    }
-
-    
+    }   
 }
 function calcyeval(){
     let nummer1 = document.querySelector("#num1");
@@ -63,8 +60,6 @@ function calcyeval(){
     }else{
         document.querySelector("#hei").innerHTML = String(numall+" and "+numall1);
     }
-
-   
 }
 function resety(){
     document.querySelector("#hei").innerHTML = "";
@@ -81,6 +76,4 @@ function calcypot(){
     let nummer2 = document.querySelector("#num2");
     let numall = Number(nummer1.value) ** Number(nummer2.value);
     document.querySelector("#hei").innerHTML = String(numall);
-
-
 }
