@@ -1,0 +1,30 @@
+
+#blue{
+    background-color: blue;
+    width: 200px;
+    height: 150px;
+}
+#green{
+    background-color: green;
+    width: 200px;
+    height: 150px;
+}
+#red{
+    background-color: red;
+    width: 200px;
+    height: 150px;
+}
+#main{
+    display: grid;
+    background-color: blue;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#main div{
+    border: solid;
+    height: 200px;
+    border-collapse: collapse;
+}
