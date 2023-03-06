@@ -1,10 +1,16 @@
 let visKort = document.querySelector("#viseKort")
 let poengTeller = document.querySelector("#poeng")
 let kortTeller = document.querySelector("#kortIgjen")
-
-
-
 let allerede = []
+let randInt = String(Math.ceil(Math.random()*13))
+let randT = Math.floor(Math.random()*4)
+let T = ["H","K","R","S"]
+let Type = T[randT]
+if (randInt < 10) {
+    randInt = "0"+randInt
+}
+let kort ="Kortstokk/"+Type+randInt+".png"
+visKort.src = kort
 function nyttKort() {
     let randInt = String(Math.ceil(Math.random()*13))
     let randT = Math.floor(Math.random()*4)
@@ -28,7 +34,6 @@ function nyttKort() {
     }
     visKort.src = kort
     kortTeller.innerHTML = Number(kortTeller.innerHTML)-1
-    
 }
 function bedre() {
     let gammel = visKort.src
