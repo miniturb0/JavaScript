@@ -38,10 +38,6 @@ function gjett(e) {
     poeng.innerHTML = poengSum;
     kortstokk.splice(tilf,1);
 }
-
-
-
-
 function start() {
     let kort = document.getElementById("lagtUt");
     let tilf = Math.floor(Math.random()*kortstokk.length);
@@ -55,7 +51,6 @@ function start() {
     kortstokk.splice(tilf,1);
 }
 start();
-
 let allerede =  [];
 let kort1 = [];
 let kort2 = [];
@@ -86,13 +81,36 @@ for (let i = 0; i < 52; i++) {
         nyttKort(kort2)
     }
 }
-
+function neww() {
+    let krigOver = []
+    for (let i = 0; i < 3; i++) {
+        let rand1 = Math.floor(Math.random()*kort1.length)
+        let rand2 = Math.floor(Math.random()*kort2.length)
+        krigOver.push(kort1[rand1])
+        krigOver.push(kort2[rand2])
+        kort1.splice[rand1,1]
+        kort2.splice[rand2,1]
+    }
+    return krigOver
+}
+function nytt() {
+    let rand1 = Math.floor(Math.random()*kort1.length)
+    let rand2 = Math.floor(Math.random()*kort2.length)
+    krig1.src = "Kortstokk/"+kort1[rand1]+".png"
+    krig2.src = "Kortstokk/"+kort2[rand2]+".png"
+}
 let krig1 = document.querySelector("#krig1")
 let krig2 = document.querySelector("#krig2")
-
 let verdi1 = "";
 let verdi2 = "";
 function sloss() {
+    if (kort1=="") {
+        document.querySelector("#krigOverskrift").innerHTML = "Spiller 2 vant"
+        return
+    }else if (kort2=="") {
+        document.querySelector("#krigOverskrift").innerHTML = "Spiller 1 vant"
+        return
+    }
     let rand1 = Math.floor(Math.random()*kort1.length)
     let rand2 = Math.floor(Math.random()*kort2.length)
     krig1.src = "Kortstokk/"+kort1[rand1]+".png"
@@ -116,4 +134,6 @@ function sloss() {
         kort2.push(kort1[rand1])
         kort1.splice(kort1.indexOf(kort1[rand1]),1)
     }
+    document.querySelector("#kortTeller1").innerHTML = kort1.length
+    document.querySelector("#kortTeller2").innerHTML = kort2.length
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+    <h1>Registrer film</h1>
+    <h5>Tittel:</h5>
+    <input type="text" placeholder="FilmtiTittel" class="inp">
+    <h5>Beskrivelse:</h5>
+    <textarea name="" id="" cols="25" rows="5" placeholder="Beskrivelse av filmen" class="inp"></textarea>
+    <h5>Årstall:</h5>
+    <input type="number"  min="0" value="2000" class="inp">
+    <h5>Aldersgrense:</h5>
+    <select name="" id="" class="inp">
+        <option value="0">Tillatt for alle</option>
+        <option value="7">7 år</option>
+        <option value="11">11 år</option>
+        <option value="15">15 år</option>
+        <option value="18">18 år</option>
+    </select>
+    <button>Registrer</button>
+</div>
+<div>
+   <h1>Tabell over Filmer</h1>
+   <table>
+    <tr>
+        <th>Filmtittel</th>
+        <th>Beskrivelse</th>
+        <th>Årstall</th>    
+        <th>Aldersgrense</th>
+    </tr>
+   </table>
+</div>
+</body>
+<script src="input.js"></script>
+</html>

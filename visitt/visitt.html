@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        background-color: cadetblue;
+    }
+    #right{
+        background-color: brown;
+    }
+</style>
+<body>
+    <div id="left">
+    <h1>Visittkort generator</h1>
+    <input type="text" placeholder="Navn"><input type="checkbox" name="" id="Navn"><br>
+    <input type="text" placeholder="TLF"><input type="checkbox" name="" id="TLF"><br>
+    <select name="" id="">
+        <option value="1">VG1</option>
+        <option value="2">VG2</option>
+        <option value="3">VG3</option>
+    </select><input type="checkbox" name="" id="Trinn"><br>
+    <input type="text" placeholder="beskrivelse"><input type="checkbox" name="" id="beskrivelse"><br>
+    <input type="radio" name="" id="">
+    <button onclick="generate()">Generate</button>
+
+    </div>
+    <div id="right">
+        <h3 id="0">Navn</h3>
+        <h3 id="1">TLF</h3>
+        <h3 id="2">Trinn</h3>
+        <h3 id="3">beskrivelse</h3>
+    </div>
+</body>
+<script src="visitt.js"></script>
+</html>

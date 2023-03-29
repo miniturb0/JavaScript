@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    #visittkort{
+        background-color: dimgray;
+        
+    }
+</style>
+<body>
+    <div>
+    <h2>Navn: </h2>
+    <input type="text">
+    <h2>Telefonnummer: </h2>
+    <input type="text">
+    <h2>Litt om deg selv</h2>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <select name="" id="">
+        <option value="VG1">VG1</option>
+        <option value="VG2">VG2</option>
+        <option value="VG3">VG3</option>
+    </select>
+    <button onclick="generate()">Generer visittkort</button>
+    </div>
+    <div>
+<div>
+<div id="visittkort">
+    <h2 id="navn">Navn: </h2>
+    <h2 id="tlf">Telefonnummer: </h2>
+    <h2 id="seg">Litt om deg selv: </h2>
+    <h2 id="VG">Trinn:</h2>
+</div>
+
+    
+</body>
+<script src="visittkort.js"></script>
+</html>
