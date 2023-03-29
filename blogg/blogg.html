@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Tangerine:400,500,600,700,800,900&display=swap");
+    #main{
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #3E5368;
+    }
+    input{
+        flex: 1;
+    }
+    .inputs{
+        display: flex;
+    }
+    #blogg{
+        border: solid;
+        background-color: #2F455C;
+    }
+    #main2{
+       display: flex;
+       flex-direction: column-reverse;
+    }
+</style>
+<body>
+    <div id="main">
+    <h1>Blogg</h1>
+    <div class="inputs">
+        <input type="text" placeholder="Overskrift">
+        <input type="text" placeholder="Tekst">
+        <input type="text" placeholder="Signatur">
+        <input type="text" placeholder="Dato">
+    </div><br>
+    <button>Post</button>
+    <div id="main2">
+        
+    </div>
+    </div> 
+</body>
+<script src="blogg.js"></script>
+</html>
