@@ -1,12 +1,76 @@
 body{
     margin: 0px;
+    color: white;
+    background-color: #0d0e0e;  
 }
 #main{
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    height: 600px;
+    height: 150vh;
 }
-#main div{
-    border: solid;
+#main > div{
+    border-left: solid #389941 1px;
+    border-right: solid #389941 1px;
     height: 100%;
+    
 }
+#mid{
+    background-color: black;
+}
+.side{
+    background-color: #1d1e1e;
+}
+#topM{
+    border-bottom: solid  #389941 2px;
+    font-family: "Press Start 2P";
+    font-size: large;
+    height: 7vh;
+    display: grid;
+    grid-template-columns: 0% 100%;
+    position: fixed;
+    top: 0;
+    width: 50%;
+}
+#TopMTitle{
+    text-align: center;
+}
+@media only screen and (max-width: 860px) {
+    #TopMTitle{
+        font-size: 28px;
+    }
+}
+#topMLogo{
+    height: 5vh;
+    margin-top: 1vh;
+}
+#logIn{
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    margin-top: 10vh;  
+}
+input{
+    height: 5vh;
+    display: block;
+    margin-bottom: 1vh;
+    border-radius: 8px;
+    border: solid grey 1px;
+    background-color: black;
+    color: white;
+    font-size: large;
+}
+input::placeholder{
+    color: white;
+    font-size: 22px;
+    transition: 0.5s;
+    
+}
+input:focus{
+    border: #389941 solid 2px;
+    outline: none;
+}
+input:focus::placeholder{
+    font-size: large;
+    
+}
+
