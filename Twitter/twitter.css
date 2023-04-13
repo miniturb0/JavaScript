@@ -23,16 +23,18 @@ body{
 #topM{
     border-bottom: solid  #389941 2px;
     font-family: "Press Start 2P";
-    font-size: large;
-    height: 7vh;
+    font-size: 3vh;
+    height: 10vh;
     display: grid;
     grid-template-columns: 0% 100%;
     position: fixed;
     top: 0;
     width: 50%;
+    opacity: 1;
 }
 #TopMTitle{
     text-align: center;
+    opacity: 1;
 }
 @media only screen and (max-width: 860px) {
     #TopMTitle{
@@ -41,13 +43,14 @@ body{
 }
 #topMLogo{
     height: 5vh;
-    margin-top: 1vh;
+    margin-top: 3vh;
+    opacity: 1;
 }
 #logIn{
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
-    margin-top: 10vh;  
+    margin-top: 13vh;  
 }
 input{
     height: 5vh;
@@ -70,7 +73,6 @@ input:focus{
     outline: none;
 }
 input:focus::placeholder{
-    font-size: large;
-    
+    font-size: large; 
 }
 

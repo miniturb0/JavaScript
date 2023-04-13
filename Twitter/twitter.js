@@ -29,3 +29,4 @@ function signUp() {
     localStorage.brukernavn += ":"+inp[0].value
     localStorage.passord += ":"+inp[1].value
 }
+// localStorage.removeItem("brukernavn");
