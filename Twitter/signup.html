@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
+    <title>Sign up</title>
     <link rel="stylesheet" href="twitter.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P">
 </head>
-
 <body>
-    
     <div id="mid">
         <div id="topM" style="width: 100%;">
         <img src="bilder/Duck-Logo.png" alt="" id="topMLogo">
@@ -21,8 +19,10 @@
     <div id="logIn">
     <input type="text" placeholder="Username" class="type inp">
     <input type="password" placeholder="Password" class="type inp">
-    <button onclick="login()">Log in</button>
-    <a href="signup.html">Don't have an account? Create one here!</a>
+    <input type="radio" name="gender" class="inp"><label for="">man</label>
+    <input type="radio" name="gender" class="inp"><label for="">woman</label>
+    <button onclick="signup()">Sign up</button>
+    <a href="login.html">Want to log in? Click here!</a>
     <div id="feilmelding"></div>
     </div>
 </body>

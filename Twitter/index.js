@@ -1,0 +1,1 @@
+let registered = document.querySelector("#registered");

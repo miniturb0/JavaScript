@@ -49,10 +49,10 @@ body{
 #logIn{
     margin-left: auto;
     margin-right: auto;
-    width: fit-content;
+    width: 50%;
     margin-top: 13vh;  
 }
-input{
+.type{
     height: 5vh;
     display: block;
     margin-bottom: 1vh;
@@ -61,18 +61,22 @@ input{
     background-color: black;
     color: white;
     font-size: large;
+    width: 100%;
 }
-input::placeholder{
+.type::placeholder{
     color: white;
     font-size: 22px;
     transition: 0.5s;
     
 }
-input:focus{
+.type:focus{
     border: #389941 solid 2px;
     outline: none;
 }
-input:focus::placeholder{
+.type:focus::placeholder{
     font-size: large; 
+}
+button{
+    display: block;
 }
 
