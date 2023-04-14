@@ -8,6 +8,8 @@ function obj(un,pw,g) {
     this.username = un;
     this.password = pw;
     this.gender = g;
+    this.followers = [];
+    this.following = [];
 }
 function signup() {
     let data = JSON.parse(localStorage.getItem("userData")) || []
@@ -61,5 +63,25 @@ window.onload = function () {
         return
     }else if (profile) {
         profile.innerHTML = sessionStorage.loggedIn
+    }
+}
+function follow(un) {
+    let username = un;
+    if (username == sessionStorage.loggedIn) {
+        return
+    }
+    let existingData = JSON.parse(localStorage.getItem("userData"))
+    for (let i = 0; i < existingData.length; i++) {
+        if (existingData[i].username == username) {
+            let existingFollowers = existingData[i].followers
+            // let existingFollowing = existingData[i].following
+            // let newFollowing = username
+            let newFollower = sessionStorage.loggedIn
+            // existingFollowing.push(newFollowing)
+            existingFollowers.push(newFollower)
+            // existingFollowing[i].following = JSON.stringify(existingFollowing)
+            existingData[i].followers = existingFollowers
+            localStorage.setItem("userData",JSON.stringify(existingData))
+        }
     }
 }
