@@ -1,8 +1,6 @@
 let inp = document.querySelectorAll(".inp");
 let feilm = document.querySelector("#feilmelding");
-let gend = document.querySelectorAll("label");
 let profile = document.querySelector("#profile");
-let userData = []
 // funksjon som skal lage et objekt
 function obj(un,pw,g) {
     this.username = un;
@@ -10,6 +8,7 @@ function obj(un,pw,g) {
     this.gender = g;
     this.followers = [];
     this.following = [];
+    this.status = "";
 }
 function signup() {
     let data = JSON.parse(localStorage.getItem("userData")) || []
@@ -41,10 +40,8 @@ function signup() {
     feilm.innerHTML = "You have created an account "+inp[0].value
     inp[0].value = "";
     inp[1].value = "";
-    inp[2].style.display = "none";
-    inp[3].style.display = "none";
-    gend[0].style.display= "none";
-    gend[1].style.display= "none";
+    inp[2].checked = false;
+    inp[3].checked = false;
 }
 function login() {
     let data = JSON.parse(localStorage.getItem("userData")) || [];
@@ -74,14 +71,37 @@ function follow(un) {
     for (let i = 0; i < existingData.length; i++) {
         if (existingData[i].username == username) {
             let existingFollowers = existingData[i].followers
-            // let existingFollowing = existingData[i].following
-            // let newFollowing = username
             let newFollower = sessionStorage.loggedIn
-            // existingFollowing.push(newFollowing)
             existingFollowers.push(newFollower)
-            // existingFollowing[i].following = JSON.stringify(existingFollowing)
             existingData[i].followers = existingFollowers
+            localStorage.setItem("userData",JSON.stringify(existingData))
+        }
+        if (existingData[i].username == sessionStorage.loggedIn) {
+            let existingFollowing = existingData[i].following
+            existingFollowing.push(username)
+            existingData[i].following = existingFollowing
             localStorage.setItem("userData",JSON.stringify(existingData))
         }
     }
 }
+function unfollow(un) {
+    let username = un;
+    if (username == sessionStorage.loggedIn) {
+        return
+    }
+    let existingData = JSON.parse(localStorage.getItem("userData"))
+    for (let i = 0; i < existingData.length; i++) {
+        if (existingData[i].username == username) {
+            let existingFollowers = existingData[i].followers
+            let newFollower = sessionStorage.loggedIn
+            let index = existingFollowers.indexOf(newFollower)
+            existingData[i].followers.splice(index,1)
+            localStorage.setItem("userData",JSON.stringify(existingData))
+        }
+        if (existingData[i].username == sessionStorage.loggedIn) {
+            let existingFollowing = existingData[i].following
+            let index = existingFollowing.indexOf(username)
+            existingData[i].following.splice(index, 1)
+            localStorage.setItem("userData",JSON.stringify(existingData))
+        }
+}}
