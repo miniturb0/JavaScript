@@ -133,7 +133,13 @@ function profilePop(e) {
     let status = document.querySelector("#status");
     let followy = document.querySelector("#follow");
     followy.name = e.target.innerHTML
-    followy.addEventListener("click",follow)
+    for (let i = 0; i < userData.length; i++) {
+        if (sessionStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)==-1) {
+            followy.addEventListener("click",follow)
+        }else if (sessionStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)!=-1) {
+            followy.addEventListener("click",unfollow)
+        }
+    }
     for (let i = 0; i < userData.length; i++) {
         if (userData[i].username == e.target.innerHTML) {
             followers.innerHTML = userData[i].followers.length;

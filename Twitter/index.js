@@ -1,8 +1,10 @@
 profile.addEventListener("click",profilePop);
 let side = document.querySelector(".side");
 let userData = JSON.parse(localStorage.getItem("userData"));
+
 if (localStorage.getItem("userData")) {
-    
+}else{
+    sessionStorage.clear()
 }
 // kode som legger til alle brukere under registrerte utenom den som er logget inn
     for (let i = 0; i < userData.length; i++) {

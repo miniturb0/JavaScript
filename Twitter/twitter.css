@@ -33,7 +33,7 @@ body{
     justify-content: center;
     transition: 0.5s;
 }
-.side > a:hover{
+.side > div:hover{
     background-color: #3b3b3a;
 }
 .side img{
