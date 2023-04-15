@@ -111,3 +111,17 @@ function unfollow(e) {
 e.target.addEventListener("click",follow)
 e.target.innerHTML = "follow"
 }
+
+
+
+function profilePop(e) {
+    let body = document.querySelector("body");
+    let main = document.createElement("div");
+    let head = document.createElement("h2");
+    main.id = "profileP";
+    head.innerHTML = e.target.innerHTML;
+    main.appendChild(head)
+    body.appendChild(main)
+
+
+}

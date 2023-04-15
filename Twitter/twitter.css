@@ -6,7 +6,7 @@ body{
 #main{
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    height: 150vh;
+    height: 100vh;
 }
 #main > div{
     border-left: solid #389941 1px;
@@ -21,7 +21,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-.side > a{
+.side > a, .side > div{
     color: white;
     text-decoration: none;
     border-bottom: solid #389941 1px;
@@ -98,4 +98,12 @@ body{
 button{
     display: block;
 }
-
+#profilePop{
+    background-color: red;
+    top: 30%;
+    left: 30%;
+    height: 60vh;
+    width: 40%;
+    position: absolute;
+    display: none;
+}
