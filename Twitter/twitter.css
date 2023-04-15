@@ -107,3 +107,6 @@ button{
     position: absolute;
     display: none;
 }
+#personalProfile{
+    display: none;
+}
