@@ -25,9 +25,9 @@ function signup() {
     let pw = inp[1].value;
     let g ="";
     if (inp[2].checked) {
-        g = "man"
+        g = "male"
     }else if (inp[3].checked) {
-        g = "woman"
+        g = "female"
     }else{
         feilm.innerHTML = "choose gender"
         return
@@ -62,8 +62,8 @@ window.onload = function () {
         profile.innerHTML = sessionStorage.loggedIn
     }
 }
-function follow(un) {
-    let username = un;
+function follow(e) {
+    let username = e.target.name;
     if (username == sessionStorage.loggedIn) {
         return
     }
@@ -83,9 +83,12 @@ function follow(un) {
             localStorage.setItem("userData",JSON.stringify(existingData))
         }
     }
+    e.target.removeEventListener("click",follow)
+    e.target.addEventListener("click",unfollow)
+    e.target.innerHTML = "unfollow"
 }
-function unfollow(un) {
-    let username = un;
+function unfollow(e) {
+    let username = e.target.name;
     if (username == sessionStorage.loggedIn) {
         return
     }
@@ -104,4 +107,7 @@ function unfollow(un) {
             existingData[i].following.splice(index, 1)
             localStorage.setItem("userData",JSON.stringify(existingData))
         }
-}}
+}e.target.removeEventListener("click",unfollow)
+e.target.addEventListener("click",follow)
+e.target.innerHTML = "follow"
+}
