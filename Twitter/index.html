@@ -16,6 +16,7 @@
     <div id="main"> 
     <div class="side">
         <div><div>Profile:</div><img src="bilder/icon.png" alt=""><div id="profile" style="cursor: pointer;"></div></div>
+        <div><img src="bilder/settingsIcon.png" alt=""><div>Settings</div></div>
         <div><div class="registered">Registered:</div></div>
         
     </div>
@@ -25,24 +26,38 @@
         <img src="bilder/Duck-Logo.png" alt="" id="topMLogo">
         <h1 id="TopMTitle">Quacker</h1>
         </div>
+        <div id="quack">
+            <div>
+                <input type="text" id="quackT" placeholder="What's happening?"><button id="quackL">Quack</button>
+            </div>
+
+            
+        </div>
+        <div id="profilePop">
+            <div style="display: flex; align-items: center;"><img src="bilder/icon.png" alt=""><h2 id="user"></h2></div><button id="follow"></button>
+            <div style="display: flex;"><div id="status"></div></div>
+            <div id="personalProfile">
+                <input type="text" placeholder="Bio" id="statusInp"><button onclick="setBio()">Set bio</button>
+            </div>
+            <div style="display: flex;">followers: <div id="followers"></div></div>
+            <div style="display: flex;">following: <div id="following"></div></div><button onclick="names()">Names/Numbers</button>
+            <div style="display: flex;">quacks: <div id="quacks"></div></div>
+            
+            
+                <button>Close</button>
+                
+        </div>
+        <div id="quacks">
+
+
+        </div>
     </div>
 
     <div class="side">
         
     </div>
     </div>
-    <div id="profilePop">
-        <div style="display: flex;"><h2>Profile:</h2><h2 id="user"></h2><button id="follow">Follow</button></div>
-        <div style="display: flex;">followers: <div id="followers"></div></div>
-        <div style="display: flex;">following: <div id="following"></div></div><button onclick="names()">Names/Numbers</button>
-        <div style="display: flex;">quacks: <div id="quacks"></div></div>
-        <div style="display: flex;">status: <div id="status"></div></div>
-        <div id="personalProfile">
-            <input type="text" placeholder="Status" id="statusInp"><button onclick="setStatus()">Set status</button>
-        </div>
-            <button>Close</button>
-            
-    </div>
+    
 </body>
 <script src="twitter.js"></script>
 <script src="index.js"></script>

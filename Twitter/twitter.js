@@ -63,8 +63,6 @@ window.onload = function () {
         profile.innerHTML = sessionStorage.loggedIn;
     }
 }
-
-
 function follow(e) {
     let username = e.target.name;
     if (username == sessionStorage.loggedIn) {
@@ -119,11 +117,6 @@ e.target.innerHTML = "follow";
 // bruke e.target.getElementsByTagName("div") for å muligens gjøre click area
 // større, da må også endre index.js kode for å lage en div rundt både img og username
 function profilePop(e) {
-    if (e.target.innerHTML == sessionStorage.loggedIn) {
-        document.querySelector("#personalProfile").style.display = "block";
-    }else{
-        document.querySelector("#personalProfile").style.display = "none";
-    }
     let userData = JSON.parse(localStorage.getItem("userData"));
     let main = document.querySelector("#profilePop");
     let head = document.querySelector("#user");
@@ -132,12 +125,24 @@ function profilePop(e) {
     let quacks = document.querySelector("#quacks");
     let status = document.querySelector("#status");
     let followy = document.querySelector("#follow");
-    followy.name = e.target.innerHTML
+    let quack = document.querySelector("#quack")
+    if (e.target.innerHTML == sessionStorage.loggedIn) {
+        document.querySelector("#personalProfile").style.display = "block";
+        followy.style.display = "none";
+    }else{
+        document.querySelector("#personalProfile").style.display = "none";
+        followy.style.display = "block";
+    }
+    followy.name = e.target.innerHTML;
+    followy.removeEventListener("click",follow);
+    followy.removeEventListener("click",unfollow);
     for (let i = 0; i < userData.length; i++) {
         if (sessionStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)==-1) {
-            followy.addEventListener("click",follow)
+            followy.innerHTML = "follow";
+            followy.addEventListener("click",follow);
         }else if (sessionStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)!=-1) {
-            followy.addEventListener("click",unfollow)
+            followy.innerHTML = "unfollow";
+            followy.addEventListener("click",unfollow);
         }
     }
     for (let i = 0; i < userData.length; i++) {
@@ -150,8 +155,9 @@ function profilePop(e) {
     }
     head.innerHTML = e.target.innerHTML;
     main.style.display = "block";
+    quack.style.display = "none";
 }
-function setStatus() {
+function setBio() {
     let statusInp = document.querySelector("#statusInp");
     let status = document.querySelector("#status");
     let newStatus = statusInp.value;
@@ -166,7 +172,6 @@ function setStatus() {
     statusInp.value = "";
     localStorage.setItem("userData",JSON.stringify(userData))
 }
-
 // endrer fra antall followers og following til navnene istedet og bytter om annen hvergang
 // ved hjelp av nN
 let nN = 0;

@@ -9,12 +9,13 @@ body{
     height: 100vh;
 }
 #main > div{
-    border-left: solid #389941 1px;
-    border-right: solid #389941 1px;
     height: 100%;
 }
 #mid{
     background-color: black;
+    border-left: solid #389941 1px;
+    border-right: solid #389941 1px;
+
 }
 .side{
     background-color: #1d1e1e;
@@ -55,11 +56,6 @@ body{
     text-align: center;
     opacity: 1;
 }
-@media only screen and (max-width: 860px) {
-    #TopMTitle{
-        font-size: 28px;
-    }
-}
 #topMLogo{
     height: 5vh;
     margin-top: 3vh;
@@ -75,38 +71,88 @@ body{
     height: 5vh;
     display: block;
     margin-bottom: 1vh;
-    border-radius: 8px;
-    border: solid grey 1px;
     background-color: black;
     color: white;
-    font-size: large;
+    font-size: 2.5vh;
     width: 100%;
+    border: solid 1px transparent;
 }
 .type::placeholder{
     color: white;
-    font-size: 22px;
+    font-size: 2.5vh;
     transition: 0.5s;
-    
 }
 .type:focus{
-    border: #389941 solid 2px;
+    border: #389941 solid 1px;
     outline: none;
 }
 .type:focus::placeholder{
-    font-size: large; 
+    
 }
-button{
+.in{
     display: block;
+    width: 100%;
+    background-color: #389941;
+    border: none;
+    border-radius: 2vh;
+    color: white;
+    font-weight: bold;
+    height: 3vh;
+    font-size: 2vh;
+    transition: 0.3s;
+}
+.in:hover{
+    background-color: #2fb83d;
 }
 #profilePop{
-    background-color: red;
-    top: 30%;
-    left: 30%;
-    height: 60vh;
-    width: 40%;
-    position: absolute;
+    background-color: black;
+    width: 100%;
     display: none;
+    border-bottom: #389941 solid 1px;
+    margin-top: 10vh;
+}
+#profilePop img{
+    height: 4vh;
 }
 #personalProfile{
     display: none;
+}
+#quack{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    height: 15vh;
+    width: 100%;
+    border-bottom: #389941 solid 1px;
+}
+#quack > div{
+    width: 70%;
+}
+    
+#quackL{
+    margin-top: 1vh;
+    background-color: #389941;
+    border: none;
+    border-radius: 3vh;
+    height: 3vh;
+    color: white;
+    font-weight: bold;
+    font-size: 1.8vh;
+}
+#quackL:hover{
+
+}
+#quackT{
+    background-color: black;
+    width: 100%;
+    height: 5vh;
+    border: none;
+    border-bottom: #389941 solid;
+    outline: none;
+    color: white;
+    font-size: 3vh;
+}
+#quackTL:focus{
+    
 }
