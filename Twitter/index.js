@@ -2,8 +2,7 @@ profile.addEventListener("click",profilePop);
 let side = document.querySelector(".side");
 let userData = JSON.parse(localStorage.getItem("userData"));
 
-if (localStorage.getItem("userData")) {
-}else{
+if (localStorage.getItem("userData")==null) {
     sessionStorage.clear()
 }
 // kode som legger til alle brukere under registrerte utenom den som er logget inn
@@ -25,10 +24,9 @@ if (localStorage.getItem("userData")) {
             //     button.innerHTML = "unfollow";
             // }
             // button.name = userData[i].username;
-            if (userData[i].gender == "male") {
-            img.src = "bilder/icon.png";
-            }else{
             img.src = "bilder/iconFF.png";
+            if (userData[i].gender == "male") {
+                img.src = "bilder/icon.png";
             }
             mainDiv.appendChild(img);
             mainDiv.appendChild(div);

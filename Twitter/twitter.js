@@ -9,7 +9,7 @@ function obj(un,pw,g) {
     this.followers = [];
     this.following = [];
     this.status = "alive";
-    this.quacks = 0;
+    this.quacks = [];
 }
 function signup() {
     let data = JSON.parse(localStorage.getItem("userData")) || []
@@ -17,28 +17,28 @@ function signup() {
         feilm.innerHTML = "Choose both username and password";
         return
     }for (let i = 0; i < data.length; i++) {
-        if (data[i].username == inp[0].value) {
-            feilm.innerHTML = "Username "+inp[0].value +" is already taken, choose another one";
-            return
+        if (data[i].username != inp[0].value) {
+            continue;
         }
+        feilm.innerHTML = `Username ${inp[0].value} is already taken, choose another one`;
+        return
     }
     let un = inp[0].value;
     let pw = inp[1].value;
-    let g ="";
-    if (inp[2].checked) {
-        g = "male";
-    }else if (inp[3].checked) {
-        g = "female";
-    }else{
+    let g ="male";
+    if (inp[3].checked == false && inp[2].checked == false) {
         feilm.innerHTML = "choose gender";
         return
+    }
+    if (inp[3].checked) {
+        g = "female";
     }
     let newUser = new obj(un, pw, g);
 // får error hvis den parser null som man får i tilfelle hvor localStorage.userData er null eller undefined så || gjør at hvis den er false så gjør den neste
     let existingData = JSON.parse(localStorage.getItem("userData")) || [];
     existingData.push(newUser);
     localStorage.setItem("userData", JSON.stringify(existingData));
-    feilm.innerHTML = "You have created an account "+inp[0].value;
+    feilm.innerHTML = `You have created an account ${inp[0].value}`;
     inp[0].value = "";
     inp[1].value = "";
     inp[2].checked = false;
@@ -53,6 +53,7 @@ function login() {
             return
         }
     }
+    feilm.innerHTML = "Feil brukernavn eller passord";
 }
 // utfører funksjonen nedenfor når siden har blitt lastet inn
 window.onload = function () {
@@ -65,9 +66,7 @@ window.onload = function () {
 }
 function follow(e) {
     let username = e.target.name;
-    if (username == sessionStorage.loggedIn) {
-        return
-    }
+    if (username == sessionStorage.loggedIn) return
     let existingData = JSON.parse(localStorage.getItem("userData"));
     for (let i = 0; i < existingData.length; i++) {
         if (existingData[i].username == username) {
@@ -126,12 +125,12 @@ function profilePop(e) {
     let status = document.querySelector("#status");
     let followy = document.querySelector("#follow");
     let quack = document.querySelector("#quack")
+    let profileIcon = document.querySelector("#profileIcon")
+    document.querySelector("#personalProfile").style.display = "none";
+    followy.style.display = "block";
     if (e.target.innerHTML == sessionStorage.loggedIn) {
         document.querySelector("#personalProfile").style.display = "block";
         followy.style.display = "none";
-    }else{
-        document.querySelector("#personalProfile").style.display = "none";
-        followy.style.display = "block";
     }
     followy.name = e.target.innerHTML;
     followy.removeEventListener("click",follow);
@@ -140,17 +139,20 @@ function profilePop(e) {
         if (sessionStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)==-1) {
             followy.innerHTML = "follow";
             followy.addEventListener("click",follow);
-        }else if (sessionStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)!=-1) {
+        }else if (sessionStorage.loggedIn == userData[i].username) {
             followy.innerHTML = "unfollow";
             followy.addEventListener("click",unfollow);
         }
-    }
-    for (let i = 0; i < userData.length; i++) {
         if (userData[i].username == e.target.innerHTML) {
             followers.innerHTML = userData[i].followers.length;
             status.innerHTML = userData[i].status;
             following.innerHTML = userData[i].following.length;
-            quacks.innerHTML = userData[i].quacks;
+            quacks.innerHTML = userData[i].quacks.length;
+            profileIcon.src = "bilder/iconFF.png";
+            if (userData[i].gender == "male") {
+                profileIcon.src = "bilder/icon.png";
+            }                
+            
         }
     }
     head.innerHTML = e.target.innerHTML;
@@ -158,9 +160,9 @@ function profilePop(e) {
     quack.style.display = "none";
 }
 function setBio() {
-    let statusInp = document.querySelector("#statusInp");
+    let statusInput = document.querySelector("#statusInp");
     let status = document.querySelector("#status");
-    let newStatus = statusInp.value;
+    let newStatus = statusInput.value;
     let head = document.querySelector("#user");
     status.innerHTML = newStatus;
     let userData = JSON.parse(localStorage.getItem("userData"));
@@ -169,7 +171,7 @@ function setBio() {
             userData[i].status = newStatus;
         }
     }
-    statusInp.value = "";
+    statusInput.value = "";
     localStorage.setItem("userData",JSON.stringify(userData))
 }
 // endrer fra antall followers og following til navnene istedet og bytter om annen hvergang
@@ -203,3 +205,15 @@ function names() {
     }
     
 }
+// denne funksjonen brukes blant annet når vi lager en ny tweet, slik at den vet konteksten, fordi det må være på en ny side i følge oppgaven.
+function hentURLSearchParams() { // returnerer en json-objekt med alle url parametrene
+    let urlSearchParams = new URLSearchParams(window.location.search) // https://stackoverflow.com/a/901144, det ser ut som å bruke Proxy er 25% raskere, men dette er mer lesbart og forståelig
+    return Object.fromEntries(urlSearchParams.entries());
+}
+// gjør det motsatte av hentURLSearchParams. for eksempel paramifyLink("index.html", {"brukernavn": "admin"}) returnerer "index.html?brukernavn=admin"
+function paramifyLink(url, json) {
+    let urlSearchParams = new URLSearchParams(json);
+    window.location.search = `${url}?${urlSearchParams.toString()}`;
+    return `${url}?${urlSearchParams.toString()}`;
+}
+let s = hentURLSearchParams()

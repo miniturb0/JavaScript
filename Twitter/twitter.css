@@ -1,28 +1,31 @@
 body{
     margin: 0px;
     color: white;
-    background-color: #0d0e0e;  
+    background-color: black;  
 }
 #main{
-    display: grid;
+    /* display: grid;
     grid-template-columns: 25% 50% 25%;
-    height: 100vh;
+    height: 150vh; */
+    display: flex;
+
 }
 #main > div{
-    height: 100%;
+    height: 100vh;
 }
 #mid{
     background-color: black;
     border-left: solid #389941 1px;
     border-right: solid #389941 1px;
-
+    width: 50%;
 }
 .side{
     background-color: #1d1e1e;
     display: flex;
     flex-direction: column;
+    width: 25%;
 }
-.side > a, .side > div{
+.side > div{
     color: white;
     text-decoration: none;
     border-bottom: solid #389941 1px;
@@ -51,6 +54,8 @@ body{
     top: 0;
     width: 50%;
     opacity: 1;
+    z-index: 1;
+    background-color: black;
 }
 #TopMTitle{
     text-align: center;
@@ -85,9 +90,6 @@ body{
 .type:focus{
     border: #389941 solid 1px;
     outline: none;
-}
-.type:focus::placeholder{
-    
 }
 .in{
     display: block;
@@ -128,8 +130,7 @@ body{
 }
 #quack > div{
     width: 70%;
-}
-    
+}   
 #quackL{
     margin-top: 1vh;
     background-color: #389941;
@@ -140,9 +141,6 @@ body{
     font-weight: bold;
     font-size: 1.8vh;
 }
-#quackL:hover{
-
-}
 #quackT{
     background-color: black;
     width: 100%;
@@ -152,7 +150,4 @@ body{
     outline: none;
     color: white;
     font-size: 3vh;
-}
-#quackTL:focus{
-    
 }
