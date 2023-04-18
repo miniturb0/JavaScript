@@ -11,13 +11,13 @@ body{
 }
 #main > div{
     height: 159vh;
-    max-width: 1000px   ;
+    
 }
 #mid{
     background-color: black;
-    border-left: solid #389941 1px;
-    border-right: solid #389941 1px;
-    width: 500px;
+    border-left: solid #657786 1px;
+    border-right: solid #657786 1px;
+    width: 650px;
     margin-left: 375px;
 }
 .side{
@@ -64,60 +64,17 @@ body{
     border-radius: 20px;
     height: 40px;
 }
-@media only screen and (max-width: 1334px) {
-    .side > div > div > div{
-        
-    }
-    .side > div > div{
-        display: none;
-    }
-    .side > div, #topMLogo, #quickLarge img{
-        margin-left: 85%;
-        color: white;
-        text-decoration: none;
-        width: fit-content;
-        display: flex;
-        align-items: center;
-        transition: 0.5s;
-        border-radius: 25px;
-        font-weight: 750;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 10px;
-        font-family: helvetica;
-        cursor: pointer;
-    }
-    #quackLarge > div{
-        display: none;
-    }
-    #quackLarge{
-        width:25px;
-        display: flex;
-        justify-content: center;
-        background-color: #389941;
-        border: none;
-        border-radius: 35px;
-        height: 45px;
-    }
-    .side img{
-        height: 30px;
-        margin-right: 0px;
-    }
-    .side{
-        background-color: black;
-        display: flex;
-        flex-direction: column;
-        max-width: 375px;
-    }
+#quackLargeQ{
+    display: none;
 }
 #topM{
-    border-bottom: solid  #389941 2px;
+    border-bottom: solid  #657786 2px;
     font-family: helvetica;
     font-size: 20px;
     height: 100px;
     position: fixed;
     top: 0;
-    width: 500px;
+    width: 650px;
     opacity: 0.92;
     background-color: black;
     font-weight: bold;
@@ -154,10 +111,84 @@ body{
 #foryouFollowing > div:hover{
     background-color: #3b3b3a;
 }
+@media only screen and (max-width: 1334px) {
+    #mid{
+        background-color: black;
+        border-left: solid #657786 1px;
+        border-right: solid #657786 1px;
+        width: 600px;
+        margin-left: 10%;
+    }
+    #topM{
+        border-bottom: solid  #657786 2px;
+        font-family: helvetica;
+        font-size: 20px;
+        height: 100px;
+        width: 600px;
+    }
+    #quackLarge > div > div{
+        display: block;
+    }
+    .side > div > div{
+        display: none;
+    }
+    .side > div, #topMLogo, #quickLarge img{
+        color: white;
+        text-decoration: none;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        transition: 0.5s;
+        border-radius: 25px;
+        font-weight: 750;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        font-family: helvetica;
+        cursor: pointer;
+    }
+    #quackLargeQuack{
+        display:none;
+    }
+    #quackLargeQ{
+        display: block;
+    }
+    #quackLarge{
+        width:25px;
+        display: flex;
+        justify-content: center;
+        background-color: #389941;
+        border: none;
+        border-radius: 35px;
+        height: 45px;
+    }
+    .side img{
+        height: 30px;
+        margin-right: 0px;
+    }
+    .side{
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        max-width: 375px;
+        width: 10%    ;
+    }
+    #mid{
+        width: 650px;
+        margin-left: 200px;
+    }
+    .side > #topMLogo{
+        margin-bottom: 5px;
+        margin-top: 10px;
+        margin-left: 55%;
+    }
+}
 #topMLogo{
     opacity: 1;
     height: 50px;
     margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 43%;
 }
 #logIn{
     margin-left: auto;
@@ -203,7 +234,7 @@ body{
     background-color: black;
     width: 100%;
     display: none;
-    border-bottom: #389941 solid 1px;
+    border-bottom: #657786 solid 1px;
     margin-top: 10vh;
 }
 #profilePop img{
@@ -219,7 +250,7 @@ body{
     margin-top: 100px;
     height:150px;
     width: 100%;
-    border-bottom: #389941 solid 1px;
+    border-bottom: #657786 solid 1px;
 }
 #quack > div{
     width: 70%;
