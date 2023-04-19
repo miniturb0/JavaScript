@@ -1,35 +1,45 @@
 body{
+    margin: 0;
+    background-color: black;
+}
+.container{
     margin: 0px;
     color: white;
     background-color: black; 
-    display: flex;
-    justify-content: center;
-    overflow-x: hidden;
+    max-width: 1450px;
+    width: 100%;
+}
+*{
+    color: white;
 }
 #main{
     display: flex;
-}
-#main > div{
-    height: 159vh;
-    
+    height: 160vh;
+    max-width: 1450px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 #mid{
     background-color: black;
-    border-left: solid #657786 1px;
-    border-right: solid #657786 1px;
+    border-left: solid #2f3336 1px;
+    border-right: solid #2f3336 1px;
     width: 650px;
-    margin-left: 375px;
+    z-index: 2;
 }
-.side{
+.sideLeft{
     background-color: black;
     display: flex;
     flex-direction: column;
+    height: fit-content;
     max-width: 375px;
-    width: 375px;
+    width: fit-content;
 }
-.side > div, #topMLogo, #quickLarge{
-    margin-left: 45%;
-    color: white;
+.sticky{
+    position: sticky;
+    top: 0;
+}
+.sideLeft > div, #topMLogo, #quackLarge{
     text-decoration: none;
     width: fit-content;
     height: 50px;
@@ -45,15 +55,55 @@ body{
     font-family: helvetica;
     cursor: pointer;
 }
-.side > div:hover{
+#topMLogo{
+    height: 50px;
+    border-radius: 30px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#topMLogo:hover{
     background-color: #3b3b3a;
 }
-.side img{
+.sideLeft > div:hover{
+    background-color: #3b3b3a;
+}
+.sideLeft img{
     height: 30px;
     margin-right: 15px;
 }
-.fixed{
-    position: fixed;
+.sideRight{
+    max-width: 375px;
+    width: fit-content;
+    display: flex;
+    height: 100vh
+}
+.sideRight img{
+    height: 20px;
+    margin-left: 5px;
+}
+#searchInput{
+    outline: none;
+    border: none; 
+    color: white;
+    background: none;
+}
+#searchInput::placeholder{
+    color: #71767b;
+
+}
+#searchbar{
+    margin-top: 5px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    height: 40px;
+    background-color: #202327;
+}
+#greenSearch{
+    display: none;
 }
 #quackLarge{
     width:45%;
@@ -68,17 +118,19 @@ body{
     display: none;
 }
 #topM{
-    border-bottom: solid  #657786 2px;
+    backdrop-filter: blur(4px);
+    border-bottom: solid  #2f3336 1px;
     font-family: helvetica;
     font-size: 20px;
     height: 100px;
-    position: fixed;
+    position: sticky;
     top: 0;
-    width: 650px;
-    opacity: 0.92;
-    background-color: black;
+    width: 100%;
+    background-color: rgba(0, 0, 0,0.90);
     font-weight: bold;
     cursor: pointer;
+    z-index: 1;
+    
 }
 #TopMTitle{
     margin: 0px;
@@ -111,41 +163,42 @@ body{
 #foryouFollowing > div:hover{
     background-color: #3b3b3a;
 }
+#searchSide{
+    display: none;
+}
+@media only screen and (max-width: 1100px) {
+    .sideRight{
+        display: none;
+    }
+    #searchSide{
+        display: flex;
+    }#main{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
 @media only screen and (max-width: 1334px) {
-    #mid{
-        background-color: black;
-        border-left: solid #657786 1px;
-        border-right: solid #657786 1px;
-        width: 600px;
-        margin-left: 10%;
-    }
-    #topM{
-        border-bottom: solid  #657786 2px;
-        font-family: helvetica;
-        font-size: 20px;
-        height: 100px;
-        width: 600px;
-    }
     #quackLarge > div > div{
         display: block;
     }
-    .side > div > div{
+    .sideLeft > div > div{
         display: none;
     }
-    .side > div, #topMLogo, #quickLarge img{
+    .sideLeft > div, #topMLogo, #quackLarge img{
         color: white;
         text-decoration: none;
         width: fit-content;
         display: flex;
         align-items: center;
+        margin-left: auto;
+        margin-right: auto;
         transition: 0.5s;
         border-radius: 25px;
         font-weight: 750;
         padding-left: 10px;
         padding-right: 10px;
         margin-bottom: 10px;
-        font-family: helvetica;
-        cursor: pointer;
     }
     #quackLargeQuack{
         display:none;
@@ -162,33 +215,20 @@ body{
         border-radius: 35px;
         height: 45px;
     }
-    .side img{
+    .sideLeft img{
         height: 30px;
         margin-right: 0px;
     }
-    .side{
-        background-color: black;
-        display: flex;
-        flex-direction: column;
+    .sideLeft{
         max-width: 375px;
-        width: 10%    ;
     }
     #mid{
-        width: 650px;
-        margin-left: 200px;
+        width: 800px;
     }
-    .side > #topMLogo{
+    .sideLeft > #topMLogo{
         margin-bottom: 5px;
         margin-top: 10px;
-        margin-left: 55%;
     }
-}
-#topMLogo{
-    opacity: 1;
-    height: 50px;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    margin-left: 43%;
 }
 #logIn{
     margin-left: auto;
@@ -247,10 +287,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
     height:150px;
     width: 100%;
-    border-bottom: #657786 solid 1px;
+    border-bottom: #2f3336 solid 1px;
 }
 #quack > div{
     width: 70%;

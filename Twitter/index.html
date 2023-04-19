@@ -1,9 +1,8 @@
 <!-- Innlogging velge profil bilde
  colors: black, #389941-->
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,59 +11,81 @@
 </head>
 <link rel="stylesheet" href="twitter.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P">
+
 <body>
-    <div id="main"> 
-    <div class="side fixed">
-        <img src="bilder/duck.png" alt="" id="topMLogo">
-        <div><img src="bilder/House.png" alt=""><div>Home</div></div>
-        <div><img src="bilder/settingsIcon.png" alt=""><div>Settings</div></div>
-        <div><img src="bilder/bellIcon.png" alt=""><div>Notifications</div></div>
-        <div><img src="bilder/icon.png" alt=""><div id="profile" style="cursor: pointer;"></div></div>
-        
-        <div id="quackLarge"><div id="quackLargeQuack">Quack</div><div id="quackLargeQ">Q</div></div>
-    </div>
-
-    <div id="mid">
-        <div id="topM">
-        <div id="TopMTitleHold"><h1 id="TopMTitle">Home</h1></div>
-        <div id="foryouFollowing">
-            <div>For you</div>
-            <div>Following</div>
-        </div>
-        </div>
-        <div id="quack">
-            <div>
-                <input type="text" id="quackT" placeholder="What's happening?"><button id="quackL">Quack</button>
+    <div id="container">
+        <div id="main">
+            <div class="sideLeft sticky" style="margin-right: 1px;">
+                <img src="bilder/duck.png" alt="" id="topMLogo">
+                <div><img src="bilder/House.png" alt="">
+                    <div>Home</div>
+                </div>
+                <div><img src="bilder/settingsIcon.png" alt="">
+                    <div>Settings</div>
+                </div>
+                <div id="searchSide"><img src="bilder/searchIcon.png" alt="">
+                    <div>Search</div>
+                </div>
+                <div><img src="bilder/bellIcon.png" alt="">
+                    <div>Notifications</div>
+                </div>
+                <div><img src="bilder/icon.png" alt="">
+                    <div id="profile" style="cursor: pointer;"></div>
+                </div>
+                <div id="quackLarge">
+                    <div id="quackLargeQuack">Quack</div>
+                    <div id="quackLargeQ">Q</div>
+                </div>
             </div>
+            <div id="mid">
+                <div id="topM">
+                    <div id="TopMTitleHold">
+                        <h1 id="TopMTitle">Home</h1>
+                    </div>
+                    <div id="foryouFollowing">
+                        <div>For you</div>
+                        <div>Following</div>
+                    </div>
+                </div>
+                <div id="quack">
+                    <div>
+                        <input type="text" id="quackT" placeholder="What's happening?"><button
+                            id="quackL">Quack</button>
+                    </div>
 
-            
-        </div>
-        <div id="profilePop">
-            <div style="display: flex; align-items: center;"><img src="" alt="" id="profileIcon"><h2 id="user"></h2></div><button id="follow"></button>
-            <div style="display: flex;"><div id="status"></div></div>
-            <div id="personalProfile">
-                <input type="text" placeholder="Bio" id="statusInp"><button onclick="setBio()">Set bio</button>
+                </div>
+                <div id="profilePop">
+                    <div style="display: flex; align-items: center;"><img src="" alt="" id="profileIcon">
+                        <h2 id="user"></h2>
+                    </div><button id="follow"></button>
+                    <div style="display: flex;">
+                        <div id="status"></div>
+                    </div>
+                    <div id="personalProfile">
+                        <input type="text" placeholder="Bio" id="statusInp"><button onclick="setBio()">Set bio</button>
+                    </div>
+                    <div style="display: flex;">followers: <div id="followers"></div>
+                    </div>
+                    <div style="display: flex;">following: <div id="following"></div>
+                    </div><button onclick="names()">Names/Numbers</button>
+                    <div style="display: flex;">quacks: <div id="quacks"></div>
+                    </div>
+
+
+                    <button>Close</button>
+
+                </div>
+                <div id="quacks">
+                </div>
             </div>
-            <div style="display: flex;">followers: <div id="followers"></div></div>
-            <div style="display: flex;">following: <div id="following"></div></div><button onclick="names()">Names/Numbers</button>
-            <div style="display: flex;">quacks: <div id="quacks"></div></div>
-            
-            
-                <button>Close</button>
-                
-        </div>
-        <div id="quacks">
-
-
+            <div class="sideRight sticky">
+                <div id="searchbar"><img src="bilder/search.png" alt=""><img src="bilder/searchI.png" alt="" id="greenSearch"><input type="text" placeholder="Search for somone" id="searchInput"></div>
+            </div>
         </div>
     </div>
 
-    <div class="side" >
-        
-    </div>
-    </div>
-    
 </body>
 <script src="twitter.js"></script>
 <script src="index.js"></script>
+
 </html>
