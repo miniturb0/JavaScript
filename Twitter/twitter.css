@@ -75,9 +75,10 @@ body{
 }
 .sideRight{
     max-width: 375px;
-    width: fit-content;
+    width: 30%;
     display: flex;
-    height: 100vh
+    height: 100vh;
+    flex-direction: column;
 }
 .sideRight img{
     height: 20px;
@@ -88,6 +89,7 @@ body{
     border: none; 
     color: white;
     background: none;
+    width: 90%;
 }
 #searchInput::placeholder{
     color: #71767b;
@@ -96,14 +98,33 @@ body{
 #searchbar{
     margin-top: 5px;
     margin-left: 15px;
+    width: 90%;
     display: flex;
     align-items: center;
     border-radius: 25px;
     height: 40px;
     background-color: #202327;
+    border: solid transparent 1px;
 }
 #greenSearch{
     display: none;
+}
+#searchbar:focus-within{
+    border: solid #389941 1px;
+}
+#searchbar:focus-within #greenSearch{
+    display: block;
+}
+#searchbar:focus-within #greySearch{
+    display: none;
+}
+#toFollow{
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 25px;
+    width: 90%;
+    background-color: #202327;
+    height: 500px;a
 }
 #quackLarge{
     width:45%;
@@ -166,16 +187,20 @@ body{
 #searchSide{
     display: none;
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1010px) {
     .sideRight{
         display: none;
     }
     #searchSide{
         display: flex;
     }#main{
-        width: 100%;
         margin-left: 0px;
         margin-right: 0px;
+        max-width: 100%;
+        width: 100%;
+    }
+    #mid{
+        width: 900px;
     }
 }
 @media only screen and (max-width: 1334px) {

@@ -205,6 +205,40 @@ function names() {
     }
     
 }
+const searchInput = document.querySelector('#searchInput');
+const searchbar = document.querySelector('#searchbar');
+
+searchInput.addEventListener('focus', () => {
+    searchbar.classList.add('focused');
+});
+
+searchInput.addEventListener('blur', () => {
+    searchbar.classList.remove('focused');
+});
+
+
+let forYou = document.querySelector("#forYou");
+let following = document.querySelector("#following");
+let asd = forYou.borderBottom;
+forYou.addEventListener("click",forYouFollowing)
+following.addEventListener("click",forYouFollowing)
+function forYouFollowing(e) {
+    if (e.target.id == "following") {
+        following.style.borderBottom = "solid #389941 3px";
+        forYou.style.borderBottom = "none";
+        localStorage.forYouFollowing = "following";
+        return
+    }
+    forYou.style.borderBottom = "solid #389941 3px";
+    following.style.borderBottom = "none";
+    localStorage.forYouFollowing = "forYou";
+    
+}
+if (localStorage.forYouFollowing = "forYou") {
+    forYou.style.borderBottom = "solid #389941 3px";
+}else{
+    following.style.borderBottom = "solid #389941 3px";
+}
 // denne funksjonen brukes blant annet når vi lager en ny tweet, slik at den vet konteksten, fordi det må være på en ny side i følge oppgaven.
 function hentURLSearchParams() { // returnerer en json-objekt med alle url parametrene
     let urlSearchParams = new URLSearchParams(window.location.search) // https://stackoverflow.com/a/901144, det ser ut som å bruke Proxy er 25% raskere, men dette er mer lesbart og forståelig
