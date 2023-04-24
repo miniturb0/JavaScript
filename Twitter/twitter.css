@@ -184,7 +184,7 @@ body{
     z-index: 1;
     display: flex;
 }
-#topProfile > img{
+#topProfile  img, #topProfile a{
     height: 40px;
     align-self: center;
 }
@@ -218,13 +218,18 @@ body{
 }
 #rightFollow{
     border-radius: 20px;
-    width: 40px;
+    width: 50px;
     padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
     background-color: white;
     color: black;
     font-weight: bold;
-    margin-right: 0px;
-    position: absolute;
+}
+#rightFollowContainer{
+    width: 100%;
+    display: flex;
+    justify-content: end;
 }
 #profileInfo{
     height: fit-content;
@@ -233,6 +238,7 @@ body{
 }
 #profileInfoContainer{
     margin-left: 15px;
+    width: 100%-15px;
 }
 #profileInfo  h2{
     font-size: 18px;
@@ -255,7 +261,7 @@ body{
     border-radius: 50%;
     height: 150px;
     width: 150px;
-    margin-top: -75px;
+    margin-top: -123px;
     margin-bottom: 20px;
 }
 .amountF{
@@ -266,6 +272,34 @@ body{
     color: #71767b;
     margin-right: 10px;
     font-size: 14px;
+}
+#quacksReplies{
+    height: 70px;
+    display: flex;
+    width: 100%;
+}
+#quacksReplies > div{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+}
+.quacksRepliesInner{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+#quacksReplies > div:hover{
+    background-color: #181818;
+}
+#bottomBorder{
+    height: 5px;
+    background-color: #389941;
+    border-radius: 2px;
+    width: 60px;
+    justify-self: center;
 }
 #foryouFollowing{
     display: flex;
