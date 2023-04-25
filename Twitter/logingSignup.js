@@ -4,6 +4,7 @@ let profile = document.querySelector("#profile");
 // funksjon som skal lage et objekt
 function obj(un,pw,g) {
     this.username = un;
+    this.displayname = un;
     this.password = pw;
     this.gender = g;
     this.followers = [];

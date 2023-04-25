@@ -1,7 +1,7 @@
 let inp = document.querySelectorAll(".inp");
 let feilm = document.querySelector("#feilmelding");
 let profile = document.querySelector("#profile");
-
+document.querySelector("#quackLarge").href = "createQuack.html"
 
 // utfører funksjonen nedenfor når siden har blitt lastet inn
 window.onload = function () {
@@ -151,6 +151,22 @@ function names() {
     }
     
 }
+function createQuack() {
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let quack = document.querySelector("#quackT");
+    let newQuack = quack.value
+    for (let i = 0; i < userData.length; i++) {
+        if (userData[i].username == localStorage.loggedIn) {
+            userData[i].quacks.push(quack.value)
+            localStorage.setItem("userData",JSON.stringify(userData))
+            quack.value = "";
+            return
+        }
+    }
+}
+
+
+
 let searchInput = document.querySelector('#searchInput');
 let searchbar = document.querySelector('#searchbar');
 searchInput.addEventListener('focus', () => {
