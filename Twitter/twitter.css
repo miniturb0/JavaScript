@@ -294,13 +294,60 @@ body{
 #quacksReplies > div:hover{
     background-color: #181818;
 }
-#bottomBorder{
-    height: 5px;
-    background-color: #389941;
-    border-radius: 2px;
-    width: 60px;
-    justify-self: center;
+#quacks{
+    width: 100%;
+    
 }
+#quacks > div{
+    padding-left: 10px;
+    padding-top: 8px;
+    height: fit-content;
+    border-bottom: #181818 solid 1px;
+    cursor: pointer;
+}
+#quacksContainer{
+    display: flex;
+    width: 100%;
+}
+#quacks img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 0px;
+}
+#quacksUsernameAt{
+    margin-left: 14px;
+    display: block;
+}
+#quacksUsernameAt > div{
+    display: flex;
+}
+#quacksUsername{
+    font-weight: bold;
+}
+#quacksAt{
+    color: #71767b;
+    margin-left: 5px;
+}
+#quacksInside{
+    margin-top: 8px;
+}
+#quacksBottom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+#quacksBottom img{
+    height: 15px;
+    width: 20px;
+}
+#quacksBottom > div{
+    display: flex;
+    width: 25%;
+    justify-content: center;
+}
+
 #foryouFollowing{
     display: flex;
     width: 100%;
