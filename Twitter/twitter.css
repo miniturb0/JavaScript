@@ -218,13 +218,14 @@ body{
 }
 #rightFollow{
     border-radius: 20px;
-    width: 50px;
+    width: fit-content;
     padding: 10px;
     margin-top: 10px;
     margin-right: 10px;
     background-color: white;
     color: black;
     font-weight: bold;
+    cursor: pointer;
 }
 #rightFollowContainer{
     width: 100%;
@@ -296,6 +297,8 @@ body{
 }
 #quacks{
     width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
     
 }
 #quacks > div{
@@ -305,48 +308,52 @@ body{
     border-bottom: #181818 solid 1px;
     cursor: pointer;
 }
-#quacksContainer{
+.quacksContainer{
     display: flex;
     width: 100%;
 }
-#quacks img {
+.quacksContainer img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     margin-top: 0px;
 }
-#quacksUsernameAt{
+.quacksUsernameAt{
     margin-left: 14px;
     display: block;
 }
-#quacksUsernameAt > div{
+.quacksUsernameAt > div{
     display: flex;
 }
-#quacksUsername{
+.quacksUsername{
     font-weight: bold;
 }
-#quacksAt{
+.quacksAt{
     color: #71767b;
     margin-left: 5px;
 }
-#quacksInside{
+.quacksInside{
     margin-top: 8px;
 }
-#quacksBottom{
+.quacksBottom{
     width: 100%;
     display: flex;
     justify-content: center;
-
 }
-#quacksBottom img{
-    height: 15px;
-    width: 20px;
+.quacksBottom img{
+    height: 25px;
+    width: 30px;
 }
-#quacksBottom > div{
+.quacksBottom > div{
     display: flex;
     width: 25%;
     justify-content: center;
 }
+.likes, .replies{
+    align-self: center;
+}
+
+
 
 #foryouFollowing{
     display: flex;

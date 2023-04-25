@@ -12,6 +12,23 @@ window.onload = function () {
         profile.innerHTML = localStorage.loggedIn;
     }
 }
+let toFollow = document.querySelector("#toFollow");
+let Data = JSON.parse(localStorage.getItem("userData"));
+for (let i = 0; i < Data.length; i++) {
+    let divC = document.createElement("div");
+    divC.innerHTML = Data[i].username
+    divC.addEventListener("click",()=>{
+        localStorage.profile = divC.innerHTML
+        location.href = "profile.html"
+    })
+    toFollow.appendChild(divC)
+}
+
+
+
+
+
+
 function follow(e) {
     let username = e.target.name;
     if (username == localStorage.loggedIn) return
@@ -151,13 +168,22 @@ function names() {
     }
     
 }
+function quackObj(quacks) {
+    this.likes = [];
+    this.comments = [];
+    this.quack = quacks;
+}
+    
+
 function createQuack() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     let quack = document.querySelector("#quackT");
-    let newQuack = quack.value
+
+    let newQuack = new quackObj(quack.value)
+
     for (let i = 0; i < userData.length; i++) {
         if (userData[i].username == localStorage.loggedIn) {
-            userData[i].quacks.push(quack.value)
+            userData[i].quacks.push(newQuack)
             localStorage.setItem("userData",JSON.stringify(userData))
             quack.value = "";
             return

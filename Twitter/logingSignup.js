@@ -9,7 +9,7 @@ function obj(un,pw,g) {
     this.gender = g;
     this.followers = [];
     this.following = [];
-    this.status = "alive";
+    this.bio = "alive";
     this.quacks = [];
 }
 function login() {
@@ -17,6 +17,7 @@ function login() {
     for (let i = 0; i < data.length; i++) {
         if (data[i].username == inp[0].value && data[i].password == inp[1].value) {
             localStorage.loggedIn = inp[0].value;
+            localStorage.profile = data[i].username
             location.href = "profile.html";
             return
         }
