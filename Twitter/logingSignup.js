@@ -11,6 +11,7 @@ function obj(un,pw,g) {
     this.following = [];
     this.bio = "alive";
     this.quacks = [];
+    this.like = [];
 }
 function login() {
     let data = JSON.parse(localStorage.getItem("userData")) || [];

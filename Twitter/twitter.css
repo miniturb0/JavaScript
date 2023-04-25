@@ -27,6 +27,7 @@ body{
     border-right: solid #2f3336 1px;
     width: 650px;
     z-index: 2;
+    height: 100%;
 }
 .sideLeft{
     background-color: black;
@@ -78,7 +79,7 @@ body{
     max-width: 375px;
     width: 30%;
     display: flex;
-    height: 100vh;
+    height: 500px;
     flex-direction: column;
 }
 .sideRight img{
@@ -174,7 +175,7 @@ body{
     backdrop-filter: blur(4px);
     border-bottom: solid  #2f3336 1px;
     font-family: helvetica;
-    font-size: 11px;
+    font-size: 13px;
     height: 60px;
     position: sticky;
     top: 0;
@@ -190,7 +191,7 @@ body{
 }
 #profileName{
     margin: 0px;
-    font-size: 18px;
+    font-size: 20px;
 }
 #topInnerProfile{
     display: flex;
@@ -216,7 +217,7 @@ body{
     background-color: grey;
     width: 100%;
 }
-#rightFollow{
+#rightFollow, #editProfile{
     border-radius: 20px;
     width: fit-content;
     padding: 10px;
@@ -226,6 +227,9 @@ body{
     color: black;
     font-weight: bold;
     cursor: pointer;
+}
+#editProfile{
+    display: none;
 }
 #rightFollowContainer{
     width: 100%;
@@ -320,7 +324,7 @@ body{
 }
 .quacksUsernameAt{
     margin-left: 14px;
-    display: block;
+    width: calc(100% - 64px);
 }
 .quacksUsernameAt > div{
     display: flex;
@@ -332,17 +336,26 @@ body{
     color: #71767b;
     margin-left: 5px;
 }
+/* får .quacksInside teksten ikke til å gå utafor diven men gå til en ny linje */
 .quacksInside{
     margin-top: 8px;
+    width: 100%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    
 }
 .quacksBottom{
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 .quacksBottom img{
-    height: 25px;
-    width: 30px;
+    height: 15px;
+    width: 15px;
+    margin-right: 10px;
+    align-self: center;
 }
 .quacksBottom > div{
     display: flex;
@@ -352,9 +365,6 @@ body{
 .likes, .replies{
     align-self: center;
 }
-
-
-
 #foryouFollowing{
     display: flex;
     width: 100%;

@@ -8,7 +8,7 @@ window.onload = function () {
     if (localStorage.loggedIn == undefined && window.location.href.indexOf("signup.html") == -1 && window.location.href.indexOf("login.html") == -1) {
         location.href = "login.html";
         return
-    }else if (profile) {
+    } else if (profile) {
         profile.innerHTML = localStorage.loggedIn;
     }
 }
@@ -17,18 +17,12 @@ let Data = JSON.parse(localStorage.getItem("userData"));
 for (let i = 0; i < Data.length; i++) {
     let divC = document.createElement("div");
     divC.innerHTML = Data[i].username
-    divC.addEventListener("click",()=>{
+    divC.addEventListener("click", () => {
         localStorage.profile = divC.innerHTML
         location.href = "profile.html"
     })
     toFollow.appendChild(divC)
 }
-
-
-
-
-
-
 function follow(e) {
     let username = e.target.name;
     if (username == localStorage.loggedIn) return
@@ -39,17 +33,17 @@ function follow(e) {
             let newFollower = localStorage.loggedIn;
             existingFollowers.push(newFollower);
             existingData[i].followers = existingFollowers;
-            localStorage.setItem("userData",JSON.stringify(existingData));
+            localStorage.setItem("userData", JSON.stringify(existingData));
         }
         if (existingData[i].username == localStorage.loggedIn) {
             let existingFollowing = existingData[i].following;
             existingFollowing.push(username);
             existingData[i].following = existingFollowing;
-            localStorage.setItem("userData",JSON.stringify(existingData));
+            localStorage.setItem("userData", JSON.stringify(existingData));
         }
     }
-    e.target.removeEventListener("click",follow);
-    e.target.addEventListener("click",unfollow);
+    e.target.removeEventListener("click", follow);
+    e.target.addEventListener("click", unfollow);
     e.target.innerHTML = "unfollow";
 }
 function unfollow(e) {
@@ -63,18 +57,18 @@ function unfollow(e) {
             let existingFollowers = existingData[i].followers;
             let newFollower = localStorage.loggedIn;
             let index = existingFollowers.indexOf(newFollower);
-            existingData[i].followers.splice(index,1);
-            localStorage.setItem("userData",JSON.stringify(existingData));
+            existingData[i].followers.splice(index, 1);
+            localStorage.setItem("userData", JSON.stringify(existingData));
         }
         if (existingData[i].username == localStorage.loggedIn) {
             let existingFollowing = existingData[i].following;
             let index = existingFollowing.indexOf(username);
             existingData[i].following.splice(index, 1);
-            localStorage.setItem("userData",JSON.stringify(existingData));
+            localStorage.setItem("userData", JSON.stringify(existingData));
         }
-}e.target.removeEventListener("click",unfollow);
-e.target.addEventListener("click",follow);
-e.target.innerHTML = "follow";
+    } e.target.removeEventListener("click", unfollow);
+    e.target.addEventListener("click", follow);
+    e.target.innerHTML = "follow";
 }
 // bruke e.target.getElementsByTagName("div") for å muligens gjøre click area
 // større, da må også endre index.js kode for å lage en div rundt både img og username
@@ -96,15 +90,15 @@ function profilePop(e) {
         followy.style.display = "none";
     }
     followy.name = e.target.innerHTML;
-    followy.removeEventListener("click",follow);
-    followy.removeEventListener("click",unfollow);
+    followy.removeEventListener("click", follow);
+    followy.removeEventListener("click", unfollow);
     for (let i = 0; i < userData.length; i++) {
-        if (localStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name)==-1) {
+        if (localStorage.loggedIn == userData[i].username && userData[i].following.indexOf(followy.name) == -1) {
             followy.innerHTML = "follow";
-            followy.addEventListener("click",follow);
-        }else if (localStorage.loggedIn == userData[i].username) {
+            followy.addEventListener("click", follow);
+        } else if (localStorage.loggedIn == userData[i].username) {
             followy.innerHTML = "unfollow";
-            followy.addEventListener("click",unfollow);
+            followy.addEventListener("click", unfollow);
         }
         if (userData[i].username == e.target.innerHTML) {
             followers.innerHTML = userData[i].followers.length;
@@ -114,8 +108,8 @@ function profilePop(e) {
             profileIcon.src = "bilder/iconFF.png";
             if (userData[i].gender == "male") {
                 profileIcon.src = "bilder/icon.png";
-            }                
-            
+            }
+
         }
     }
     head.innerHTML = e.target.innerHTML;
@@ -135,7 +129,7 @@ function setBio() {
         }
     }
     statusInput.value = "";
-    localStorage.setItem("userData",JSON.stringify(userData))
+    localStorage.setItem("userData", JSON.stringify(userData))
 }
 // endrer fra antall followers og following til navnene istedet og bytter om annen hvergang
 // ved hjelp av nN
@@ -154,8 +148,8 @@ function names() {
                 following.innerHTML = string2;
             }
         }
-        nN=1
-    }else{
+        nN = 1
+    } else {
         for (let i = 0; i < userData.length; i++) {
             if (userData[i].username == head.innerHTML) {
                 let string1 = userData[i].followers.length;
@@ -164,31 +158,35 @@ function names() {
                 following.innerHTML = string2;
             }
         }
-        nN=0
+        nN = 0
     }
-    
+
 }
-function quackObj(quacks) {
+// funksjon som lager et objekt med en default parameter som blir original hvis den ikke blir bestemt når funkjsoin blir utført
+function quackObj(text, place = "original") {
     this.likes = [];
     this.comments = [];
-    this.quack = quacks;
+    this.comment = place;
+    this.quack = text;
 }
-    
-
 function createQuack() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     let quack = document.querySelector("#quackT");
-
-    let newQuack = new quackObj(quack.value)
+    if (quack.value == "") return
+    let newQuack = new quackObj(quack.value);
 
     for (let i = 0; i < userData.length; i++) {
         if (userData[i].username == localStorage.loggedIn) {
-            userData[i].quacks.push(newQuack)
-            localStorage.setItem("userData",JSON.stringify(userData))
+            userData[i].quacks.push(newQuack);
+            localStorage.setItem("userData", JSON.stringify(userData));
             quack.value = "";
             return
         }
     }
+}
+function accessQuack(e) {
+    localStorage.quack =  e.target.querySelector(".quacksAt").innerHTML;
+    location.href = "tweet_quack.html"
 }
 
 
@@ -198,7 +196,6 @@ let searchbar = document.querySelector('#searchbar');
 searchInput.addEventListener('focus', () => {
     searchbar.classList.add('focused');
 });
-
 searchInput.addEventListener('blur', () => {
     searchbar.classList.remove('focused');
 });
