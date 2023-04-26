@@ -163,23 +163,29 @@ function names() {
 
 }
 // funksjon som lager et objekt med en default parameter som blir original hvis den ikke blir bestemt når funkjsoin blir utført
-function quackObj(text, place = "original") {
+function quackObj(text,creator,number) {
+    this.id = `${creator}${number}`;
     this.likes = [];
     this.comments = [];
-    this.comment = place;
     this.quack = text;
+}
+function replyObj(text,creator,number) {
+    this.id = `${creator}${number}`;
+    this.likes = [];
+    this.comments = [];
+    this.reply = text;
 }
 function createQuack() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     let quack = document.querySelector("#quackT");
     if (quack.value == "") return
-    let newQuack = new quackObj(quack.value);
-
     for (let i = 0; i < userData.length; i++) {
         if (userData[i].username == localStorage.loggedIn) {
+            let newQuack = new quackObj(quack.value,userData[i].username,userData[i].quacks.length+1);
             userData[i].quacks.push(newQuack);
             localStorage.setItem("userData", JSON.stringify(userData));
             quack.value = "";
+            
             return
         }
     }

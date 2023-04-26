@@ -36,7 +36,7 @@ for (let i = 0; i < userData.length; i++) {
             <div class="quacksUsernameAt">
                 <div>
                     <div class="quacksUsername">${userData[i].displayname}</div>
-                    <div class="quacksAt">@${userData[i].username}</div>
+                    <div class="quacksAt" id="${userData[i].quacks[j].id}">@${userData[i].username}</div>
                 </div>
                 <div class="quacksInside">${userData[i].quacks[j].quack}</div>
             </div>
@@ -58,6 +58,6 @@ for (let i = 0; i < quacksContainer.length; i++) {
 // finner .quacksAt class og tar innerHTML med unntak av førtse symbol
 // og lagrer det i localStorage for å bruke til tweet/quack siden
 function accessQuack(e) {
-    localStorage.quack =  e.currentTarget.querySelector('.quacksAt').innerHTML.slice(1);
+    localStorage.quack =  e.currentTarget.querySelector('.quacksAt').id;
     location.href = "tweet_quack.html"
 }
