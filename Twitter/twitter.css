@@ -154,7 +154,6 @@ body{
     font-weight: bold;
     cursor: pointer;
     z-index: 1;
-    
 }
 #TopMTitle{
     margin: 0px;
@@ -171,6 +170,51 @@ body{
     width: 100%;
     height: 50%;
 }
+#topMTweet{
+    height: 60px;
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0,0.90);
+    backdrop-filter: blur(4px);
+}
+#topMTweet #topMtitleHold{
+    display: flex;
+    align-content: center;
+}
+#topMTweet img, #topMTweet a{
+    height: 40px;
+    align-self: center;
+}
+#topMTitleHoldTweet{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#topMTitleTweet{
+    font-size: 20px;
+    margin: 0px;
+}
+.quacksUsernameAtReply{
+    margin-left: 15px;
+    width: calc(100% - 64px);
+}
+.quacksUsernameAtReply{
+    display: flex;
+    flex-direction: column;
+}
+.quacksAtReply{
+    margin: 0px;
+    color: #71767b;
+    margin-top: 5px;
+}
+.quacksInsideReply{
+    margin-top: 15px;
+    width: 100%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
 #topProfile{
     backdrop-filter: blur(4px);
     border-bottom: solid  #2f3336 1px;
