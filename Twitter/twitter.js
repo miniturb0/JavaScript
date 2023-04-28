@@ -160,7 +160,6 @@ function names() {
         }
         nN = 0
     }
-
 }
 // funksjon som lager et objekt med en default parameter som blir original hvis den ikke blir bestemt når funkjsoin blir utført
 function quackObj(text,creator,number) {
@@ -168,12 +167,6 @@ function quackObj(text,creator,number) {
     this.likes = [];
     this.comments = [];
     this.quack = text;
-}
-function replyObj(text,creator,number) {
-    this.id = `${creator}${number}`;
-    this.likes = [];
-    this.comments = [];
-    this.reply = text;
 }
 function createQuack() {
     let userData = JSON.parse(localStorage.getItem("userData"));
@@ -185,17 +178,56 @@ function createQuack() {
             userData[i].quacks.push(newQuack);
             localStorage.setItem("userData", JSON.stringify(userData));
             quack.value = "";
-            
             return
         }
     }
 }
+function createReply() {
+    let reply = document.querySelector("#quackT");
+    let addComment = document.querySelector(".quacksAtReply").innerHTML.slice(1);
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let replyId
+    if (quack.value == "") return
+    for (let i = 0; i < userData.length; i++) {
+        if (userData[i].username == localStorage.quackProfile) {
+            userData = JSON.parse(localStorage.getItem("userData"));
+            let newReply = new quackObj(reply.value,userData[i].username,userData[i].replies.length+1);
+            userData[i].replies.push(newReply);
+            localStorage.setItem("userData", JSON.stringify(userData));
+            reply.value = "";
+            replyId = `${userData[i].username}${userData[i].replies.length+1}`;
+        }
+    }
+    userData = JSON.parse(localStorage.getItem("userData"));
+    for (let i = 0; i < userData.length; i++) {
+        if (addComment == userData[i].username) {
+            for (let j = 0; j < userData[i].quacks.length; j++) {
+                if (localStorage.quack == userData[i].quacks[j].id) {
+                    userData[i].quacks[j].comments.push(replyId);
+                    localStorage.setItem("userData", JSON.stringify(userData));
+                    return
+                }
+            }
+            for (let k = 0; k < userData[i].replies.length; k++) {
+                if (localStorage.quack == userData[i].replies[j].id) {
+                    userData[i].replies[j].comments.push(replyId);
+                    localStorage.setItem("userData", JSON.stringify(userData));
+                    return
+                }
+            }
+        }
+        
+    }
+}
 function accessQuack(e) {
-    localStorage.quack =  e.target.querySelector(".quacksAt").innerHTML;
+    localStorage.quack =  e.currentTarget.id;
+    localStorage.quackProfile = e.currentTarget.slot
     location.href = "tweet_quack.html"
 }
-
-
+function accessProfile(e) {
+    localStorage.profile = e.currentTarget.querySelector(".quacksAt").innerHTML.slice(1)
+    location.href = "profile.html"
+}
 
 let searchInput = document.querySelector('#searchInput');
 let searchbar = document.querySelector('#searchbar');
@@ -205,7 +237,6 @@ searchInput.addEventListener('focus', () => {
 searchInput.addEventListener('blur', () => {
     searchbar.classList.remove('focused');
 });
-
 
 // denne funksjonen brukes blant annet når vi lager en ny tweet, slik at den vet konteksten, fordi det må være på en ny side i følge oppgaven.
 function hentURLSearchParams() { // returnerer en json-objekt med alle url parametrene

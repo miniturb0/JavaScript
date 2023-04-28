@@ -34,11 +34,11 @@ for (let i = 0; i < userData.length; i++) {
             <div class="quacksContainer">
             <img src="bilder/LOTR.png" alt="">
             <div class="quacksUsernameAt">
-                <div>
+                <div class="quacksUsernameAtOnly">
                     <div class="quacksUsername">${userData[i].displayname}</div>
-                    <div class="quacksAt" id="${userData[i].quacks[j].id}">@${userData[i].username}</div>
+                    <div class="quacksAt">@${userData[i].username}</div>
                 </div>
-                <div class="quacksInside">${userData[i].quacks[j].quack}</div>
+                <div class="quacksInside" id="${userData[i].quacks[j].id}" slot="${userData[i].username}">${userData[i].quacks[j].quack}</div>
             </div>
             </div>
             <div class="quacksBottom">
@@ -51,13 +51,24 @@ for (let i = 0; i < userData.length; i++) {
         }
     }
 }
-let quacksContainer = document.querySelectorAll(".quacksContainer")
-for (let i = 0; i < quacksContainer.length; i++) {
-    quacksContainer[i].addEventListener("click",accessQuack)
+let quacksInside = document.querySelectorAll(".quacksInside");
+let usernameAtOnly = document.querySelectorAll(".quacksUsernameAtOnly");
+for (let i = 0; i < usernameAtOnly.length; i++) {
+    usernameAtOnly[i].addEventListener("click",accessProfile)
+    
 }
+for (let i = 0; i < quacksInside.length; i++) {
+    quacksInside[i].addEventListener("click",accessQuack)
+}
+
 // finner .quacksAt class og tar innerHTML med unntak av førtse symbol
 // og lagrer det i localStorage for å bruke til tweet/quack siden
 function accessQuack(e) {
-    localStorage.quack =  e.currentTarget.querySelector('.quacksAt').id;
+    localStorage.quack = e.currentTarget.id;
+    localStorage.quackProfile = e.currentTarget.slot
     location.href = "tweet_quack.html"
+}
+function accessProfile(e) {
+    localStorage.profile = e.currentTarget.querySelector(".quacksAt").innerHTML.slice(1)
+    location.href = "profile.html"
 }

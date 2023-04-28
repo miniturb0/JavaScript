@@ -373,6 +373,9 @@ body{
 .quacksUsernameAt > div{
     display: flex;
 }
+.quacksUsername:hover{
+    text-decoration-line: underline;
+}
 .quacksUsername{
     font-weight: bold;
 }
