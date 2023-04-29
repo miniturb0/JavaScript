@@ -81,7 +81,7 @@ function profilePop(e) {
     let quacks = document.querySelector("#quacks");
     let status = document.querySelector("#status");
     let followy = document.querySelector("#follow");
-    let quack = document.querySelector("#quack")
+    let quack = document.querySelector(".quack")
     let profileIcon = document.querySelector("#profileIcon")
     document.querySelector("#personalProfile").style.display = "none";
     followy.style.display = "block";
@@ -162,70 +162,52 @@ function names() {
     }
 }
 // funksjon som lager et objekt med en default parameter som blir original hvis den ikke blir bestemt når funkjsoin blir utført
-function quackObj(text,creator,number) {
+function quackObj(text,creator,number,form) {
     this.id = `${creator}${number}`;
     this.likes = [];
     this.comments = [];
     this.quack = text;
+    this.isComment = form;
 }
 function createQuack() {
-    let userData = JSON.parse(localStorage.getItem("userData"));
     let quack = document.querySelector("#quackT");
     if (quack.value == "") return
-    for (let i = 0; i < userData.length; i++) {
-        if (userData[i].username == localStorage.loggedIn) {
-            let newQuack = new quackObj(quack.value,userData[i].username,userData[i].quacks.length+1);
-            userData[i].quacks.push(newQuack);
-            localStorage.setItem("userData", JSON.stringify(userData));
-            quack.value = "";
-            return
-        }
-    }
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    // finner indexen for meg istedenfor at jeg bruker for løkke og if statement
+    let indexUsername = userData.findIndex(u => u.username == localStorage.loggedIn);
+    let newQuack = new quackObj(quack.value,userData[indexUsername].username,userData[indexUsername].quacks.length+1,false);
+    userData[indexUsername].quacks.push(newQuack);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    quack.value = "";
 }
 function createReply() {
-    let reply = document.querySelector("#quackT");
-    let addComment = document.querySelector(".quacksAtReply").innerHTML.slice(1);
-    let userData = JSON.parse(localStorage.getItem("userData"));
-    let replyId
+    let quack = document.querySelector("#quackT");
     if (quack.value == "") return
-    for (let i = 0; i < userData.length; i++) {
-        if (userData[i].username == localStorage.quackProfile) {
-            userData = JSON.parse(localStorage.getItem("userData"));
-            let newReply = new quackObj(reply.value,userData[i].username,userData[i].replies.length+1);
-            userData[i].replies.push(newReply);
-            localStorage.setItem("userData", JSON.stringify(userData));
-            reply.value = "";
-            replyId = `${userData[i].username}${userData[i].replies.length+1}`;
-        }
-    }
-    userData = JSON.parse(localStorage.getItem("userData"));
-    for (let i = 0; i < userData.length; i++) {
-        if (addComment == userData[i].username) {
-            for (let j = 0; j < userData[i].quacks.length; j++) {
-                if (localStorage.quack == userData[i].quacks[j].id) {
-                    userData[i].quacks[j].comments.push(replyId);
-                    localStorage.setItem("userData", JSON.stringify(userData));
-                    return
-                }
-            }
-            for (let k = 0; k < userData[i].replies.length; k++) {
-                if (localStorage.quack == userData[i].replies[j].id) {
-                    userData[i].replies[j].comments.push(replyId);
-                    localStorage.setItem("userData", JSON.stringify(userData));
-                    return
-                }
-            }
-        }
-        
-    }
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    // u.findIndex finner indexen for meg istedenfor at jeg bruker for løkke og if statement
+    let indexUsername = userData.findIndex(u => u.username == localStorage.loggedIn);
+    let newQuack = new quackObj(quack.value,userData[indexUsername].username,userData[indexUsername].quacks.length+1,true);
+    userData[indexUsername].quacks.push(newQuack);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    // her finner jeg quacken som blir repllyet til for å legge til IDen til commenten i comments arrayen
+    let indexQuack = userData.find(u => u.username == localStorage.quackProfile);
+    let theQuack = indexQuack.quacks.find(i => i.id == localStorage.quack);
+    let quackId = `${userData[indexUsername].username}${userData[indexUsername].quacks.length}`;
+    theQuack.comments.push(quackId);
+    localStorage.setItem("userData", JSON.stringify(userData));
+    quack.value = "";
 }
 function accessQuack(e) {
     localStorage.quack =  e.currentTarget.id;
-    localStorage.quackProfile = e.currentTarget.slot
+    localStorage.quackProfile = e.currentTarget.slot;
     location.href = "tweet_quack.html"
 }
 function accessProfile(e) {
     localStorage.profile = e.currentTarget.querySelector(".quacksAt").innerHTML.slice(1)
+    location.href = "profile.html"
+}
+function accessProfileQuack(e) {
+    localStorage.profile = e.target.parentElement.querySelector(".quacksAtReply").innerHTML.slice(1);
     location.href = "profile.html"
 }
 

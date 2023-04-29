@@ -10,9 +10,9 @@ let followersFollowing = document.querySelectorAll(".amountF");
 userAt.innerHTML = `@${localStorage.profile}`;
 let followButton = document.querySelector("#rightFollow");
 let editProfile = document.querySelector("#editProfile")
-let quackTweets = document.querySelector("#quacks");
+let quackTweets = document.querySelector(".quacks");
 followButton.name = localStorage.profile;
-followButton.addEventListener("click",follow)
+// followButton.addEventListener("click",follow)
 
 if (localStorage.profile == localStorage.loggedIn) {
     followButton.style.display ="none";

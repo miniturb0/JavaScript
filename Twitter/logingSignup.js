@@ -11,7 +11,6 @@ function obj(un,pw,g) {
     this.following = [];
     this.bio = "alive";
     this.quacks = [];
-    this.replies = [];
     this.like = [];
 }
 function login() {

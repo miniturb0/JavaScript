@@ -203,6 +203,13 @@ body{
     display: flex;
     flex-direction: column;
 }
+.quacksUsernameReply{
+    font-weight: bold;
+    width: fit-content;
+}
+.quacksUsernameReply:hover{
+    text-decoration-line: underline;
+}
 .quacksAtReply{
     margin: 0px;
     color: #71767b;
@@ -213,6 +220,7 @@ body{
     width: 100%;
     word-break: break-all;
     overflow-wrap: break-word;
+    cursor: text;
 }
 
 #topProfile{
@@ -343,13 +351,13 @@ body{
 #quacksReplies > div:hover{
     background-color: #181818;
 }
-#quacks{
+.quacks{
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
     
 }
-#quacks > div{
+.quacks > div{
     padding-left: 10px;
     padding-top: 8px;
     height: fit-content;
