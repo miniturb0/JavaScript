@@ -48,3 +48,13 @@ for (let i = 0; i < quack.comments.length; i++) {
 
 
 }
+
+quacksInside = document.querySelectorAll(".quacksInside");
+let usernameAtOnly = document.querySelectorAll(".quacksUsernameAtOnly");
+for (let i = 0; i < usernameAtOnly.length; i++) {
+    usernameAtOnly[i].addEventListener("click",accessProfile)
+    
+}
+for (let i = 1; i < quacksInside.length; i++) {
+    quacksInside[i].addEventListener("click",accessQuack)
+}
