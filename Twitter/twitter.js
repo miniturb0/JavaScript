@@ -1,8 +1,10 @@
 let inp = document.querySelectorAll(".inp");
 let feilm = document.querySelector("#feilmelding");
 let profile = document.querySelector("#profile");
-document.querySelector("#quackLarge").href = "createQuack.html"
-
+let quackHref = document.querySelector("#quackLarge");
+quackHref.addEventListener("click",() => {location.href = "createQuack.html"});
+let topMLogo = document.querySelector("#topMLogo");
+topMLogo.addEventListener("click", () => {location.href = "index.html"});
 // utfører funksjonen nedenfor når siden har blitt lastet inn
 window.onload = function () {
     if (localStorage.loggedIn == undefined && window.location.href.indexOf("signup.html") == -1 && window.location.href.indexOf("login.html") == -1) {
@@ -22,53 +24,6 @@ for (let i = 0; i < Data.length; i++) {
         location.href = "profile.html"
     })
     toFollow.appendChild(divC)
-}
-function follow(e) {
-    let username = e.target.name;
-    if (username == localStorage.loggedIn) return
-    let existingData = JSON.parse(localStorage.getItem("userData"));
-    for (let i = 0; i < existingData.length; i++) {
-        if (existingData[i].username == username) {
-            let existingFollowers = existingData[i].followers;
-            let newFollower = localStorage.loggedIn;
-            existingFollowers.push(newFollower);
-            existingData[i].followers = existingFollowers;
-            localStorage.setItem("userData", JSON.stringify(existingData));
-        }
-        if (existingData[i].username == localStorage.loggedIn) {
-            let existingFollowing = existingData[i].following;
-            existingFollowing.push(username);
-            existingData[i].following = existingFollowing;
-            localStorage.setItem("userData", JSON.stringify(existingData));
-        }
-    }
-    e.target.removeEventListener("click", follow);
-    e.target.addEventListener("click", unfollow);
-    e.target.innerHTML = "unfollow";
-}
-function unfollow(e) {
-    let username = e.target.name;;
-    if (username == localStorage.loggedIn) {
-        return
-    }
-    let existingData = JSON.parse(localStorage.getItem("userData"));
-    for (let i = 0; i < existingData.length; i++) {
-        if (existingData[i].username == username) {
-            let existingFollowers = existingData[i].followers;
-            let newFollower = localStorage.loggedIn;
-            let index = existingFollowers.indexOf(newFollower);
-            existingData[i].followers.splice(index, 1);
-            localStorage.setItem("userData", JSON.stringify(existingData));
-        }
-        if (existingData[i].username == localStorage.loggedIn) {
-            let existingFollowing = existingData[i].following;
-            let index = existingFollowing.indexOf(username);
-            existingData[i].following.splice(index, 1);
-            localStorage.setItem("userData", JSON.stringify(existingData));
-        }
-    } e.target.removeEventListener("click", unfollow);
-    e.target.addEventListener("click", follow);
-    e.target.innerHTML = "follow";
 }
 // bruke e.target.getElementsByTagName("div") for å muligens gjøre click area
 // større, da må også endre index.js kode for å lage en div rundt både img og username

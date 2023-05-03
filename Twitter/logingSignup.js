@@ -12,6 +12,7 @@ function obj(un,pw,g) {
     this.bio = "alive";
     this.quacks = [];
     this.like = [];
+    this.banner = "#389941";
 }
 function login() {
     let data = JSON.parse(localStorage.getItem("userData")) || [];

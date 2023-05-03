@@ -9,7 +9,7 @@ let userData = JSON.parse(localStorage.getItem("userData"));
 let quackT = document.querySelector("#quackT");
 let userQuacks = userData.find(q => q.username == localStorage.quackProfile).quacks;
 let quack = userQuacks.find(q => q.id == localStorage.quack);
-quacksUsername.innerHTML = localStorage.quackProfile;
+quacksUsername.innerHTML = userData.find(u=>u.username==localStorage.quackProfile).displayname;
 usernameAt.addEventListener("click", accessProfileQuack);
 quacksAt.innerHTML = `@${localStorage.quackProfile}`;
 quackT.addEventListener("keyup",(e) => {if(e.key ==="Enter") createReply()})

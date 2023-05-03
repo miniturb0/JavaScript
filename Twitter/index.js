@@ -5,30 +5,12 @@ let userData = JSON.parse(localStorage.getItem("userData"));
 if (localStorage.getItem("userData") == null) {
     sessionStorage.clear()
 }
-// kode som legger til alle brukere under registrerte utenom den som er logget inn
-// for (let i = 0; i < userData.length; i++) {
-//     if (userData[i].username != sessionStorage.loggedIn) {
-//         let mainDiv = document.createElement("div");
-//         mainDiv.href = "";
-//         let div = document.createElement("div");
-//         div.innerHTML = userData[i].username;
-//         div.style.cursor = "pointer";
-//         div.addEventListener("click",profilePop)
-//         let img = document.createElement("img");
-//         img.src = "bilder/iconFF.png";
-//         if (userData[i].gender == "male") {
-//             img.src = "bilder/icon.png";
-//         }
-//         mainDiv.appendChild(img);
-//         mainDiv.appendChild(div);
-//         side.appendChild(mainDiv);
-//     } 
-// }
 
 let forYou = document.querySelector("#forYou");
 let following = document.querySelector("#following");
 forYou.addEventListener("click", forYouFollowing)
 following.addEventListener("click", forYouFollowing)
+
 function forYouFollowing(e) {
     forYou.style.borderBottom = "solid #389941 3px";
     forYou.style.color = "white";
@@ -43,10 +25,51 @@ function forYouFollowing(e) {
         sessionStorage.forYouFollowing = "following";
     }
 }
+
+
+
+
 if (sessionStorage.forYouFollowing == "forYou") {
     forYou.style.borderBottom = "solid #389941 3px";
     forYou.style.color = "white";
     following.style.color = "#71767b";
+    let theFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
+    let quacks = [];
+    for (let i = 0; i < theFollowing.length; i++) {
+       quacks.push(theFollowing[i].quacks);
+    }
+    for (let i = 0; i < quacks.length; i++) {
+        let randIndex = Math.floor(Math.random()*(theFollowing.length-i));
+        let username = quack[randIndex].id.slice(0,-1);
+        let user = userData.find(u => u.username == username);
+        let tet = document.createRange().createContextualFragment(`<div>
+            <div class="quacksContainer">
+            <img src="bilder/LOTR.png" alt="">
+            <div class="quacksUsernameAt">
+                <div class="quacksUsernameAtOnly">
+                    <div class="quacksUsername">${user.displayname}</div>
+                    <div class="quacksAt">@${user.username}</div>
+                </div>
+                <div class="quacksInside" id="${quacks[randIndex].id}" slot="${user.username}">${quacks[randIndex].quack}</div>
+            </div>
+            </div>
+            <div class="quacksBottom">
+                <div><img src="bilder/twitterLike.png" alt=""><div class="likes">${quacks[randIndex].likes.length}</div></div>
+                <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${quacks[randIndex].comments.length}</div></div>
+            </div>
+        </div>`);
+        document.querySelector(".quacks").appendChild(tet);
+
+
+
+
+
+        quacks.slice(randIndex,1);
+    }
+
+
+
+
 } else {
     forYou.style.color = "#71767b";
     following.style.color = "white";

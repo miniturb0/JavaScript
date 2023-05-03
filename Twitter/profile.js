@@ -1,5 +1,3 @@
-// gi sessionStorage.profil
-// sessionStorage.profil skal bestemme profil.html sitt innhold
 let profileName = document.querySelector("#profileName");
 let quacks = document.querySelector("#topQuacks");
 let userData = JSON.parse(localStorage.getItem("userData"));
@@ -11,6 +9,8 @@ userAt.innerHTML = `@${localStorage.profile}`;
 let followButton = document.querySelector("#rightFollow");
 let editProfile = document.querySelector("#editProfile")
 let quackTweets = document.querySelector(".quacks");
+let banner = document.querySelector("#profileBanner");
+editProfile.addEventListener("click", () => {location.href = "settings.html"})
 followButton.name = localStorage.profile;
 // followButton.addEventListener("click",follow)
 
@@ -18,7 +18,40 @@ if (localStorage.profile == localStorage.loggedIn) {
     followButton.style.display ="none";
     editProfile.style.display = "block";
 }
-    
+
+if (userData.find(u => u.username == localStorage.profile).followers.indexOf(localStorage.loggedIn)==-1) {
+    followButton.addEventListener("click",follow)
+    followButton.innerHTML = "Follow"
+}else{
+    followButton.addEventListener("click",unfollow)
+    followButton.innerHTML = "Unfollow"
+}
+
+function follow() {
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let addFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
+    let addFollower = userData.find(u => u.username == localStorage.profile).followers;
+    addFollowing.push(localStorage.profile);
+    addFollower.push(localStorage.loggedIn);
+    followButton.innerHTML = "Unfollow";
+    localStorage.setItem("userData",JSON.stringify(userData));
+    window.location.reload()
+    // followButton.removeEventListener("click",follow);
+    // followButton.addEventListener("click",unfollow);
+}
+function unfollow() {
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let addFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
+    let addFollower = userData.find(u => u.username == localStorage.profile).followers;
+    addFollowing.splice(addFollowing.indexOf(localStorage.profile),1);
+    addFollower.splice(addFollower.indexOf(localStorage.loggedin),1);
+    followButton.innerHTML = "Follow";
+    localStorage.setItem("userData",JSON.stringify(userData));
+    window.location.reload()
+    // followButton.removeEventListener("click",unfollow);
+    // followButton.addEventListener("click",follow);
+}
+
 
 for (let i = 0; i < userData.length; i++) {
     if (localStorage.profile == userData[i].username){
@@ -26,6 +59,7 @@ for (let i = 0; i < userData.length; i++) {
         profileName.innerHTML = localStorage.profile;
         userName.innerHTML = userData[i].displayname;
         bio.innerHTML = userData[i].bio;
+        banner.style.backgroundColor = userData[i].banner;
         followersFollowing[0].innerHTML = userData[i].following.length;
         followersFollowing[1].innerHTML = userData[i].followers.length;
         // koden nedenfor gjør at stringen jeg bruker kan bli appended videre

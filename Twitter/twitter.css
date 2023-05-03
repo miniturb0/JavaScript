@@ -304,13 +304,19 @@ body{
 }
 #atProfile{
     color: #71767b;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 #bio{
     margin-top: 20px;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 #username{
     margin: 0px;
     margin-bottom: 4px;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 #followingFollowers{
     display: flex;
@@ -441,7 +447,7 @@ body{
 #searchSide{
     display: none;
 }
-#following{
+#following, #forYou{
     color: #71767b;
 }
 @media only screen and (max-width: 1010px) {
@@ -594,4 +600,56 @@ body{
     outline: none;
     color: white;
     font-size: 20px;
+}
+#profile{
+    width: 100%;
+}
+#profileContainer{
+    width: 90%;
+    margin: 0px auto;
+}
+#profileContainer > div{
+    width: 100%;
+    color: #71767b;
+
+}
+#name > input{
+    width: 100%;
+    outline: none;
+    border: solid #2f3336 1px; 
+    color: white;
+    background: none;
+    height: 40px;
+    font-size: 22px;
+}
+#bio > textarea{
+    width: 100%;
+    outline: none;
+    border: solid #2f3336 1px; 
+    color: white;
+    background: none;
+    height: 100px;
+    font-size: 22px;
+    resize: none;
+}
+#banner > input{
+    outline: none;
+    /* border: solid #2f3336 1px; */
+    padding: 0px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    color: white;
+    background: none;
+}
+#save{
+    border-radius: 20px;
+    width: fit-content;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
 }

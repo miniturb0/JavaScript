@@ -1,5 +1,3 @@
-<!-- Innlogging velge profil bilde
- colors: black, #389941-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,46 +38,40 @@
             <div id="mid">
                 <div id="topM">
                     <div id="TopMTitleHold">
-                        <h1 id="TopMTitle">Home</h1>
+                        <h1 id="TopMTitle">Settings</h1>
                     </div>
                     <div id="foryouFollowing">
-                        <div id="forYou">For you</div>
-                        <div id="following">Following</div>
+                        <div id="forYou">General</div>
+                        <div id="following">Profile</div>
                     </div>
                 </div>
-                <div class="quacks">
-
-
+                <div id="profile">
+                    <div id="profileContainer">
+                        <div id="name">
+                            <div>Name</div>
+                            <input type="text" maxlength="50" id="newDisplayName">
+                        </div>
+                        <div id="bio">
+                            <div>Bio</div>
+                            <textarea name="" cols="30" rows="10" maxlength="150"  id="newBio"></textarea>
+                        </div>
+                        <div id="banner">
+                            <div>Banner color</div>
+                            <input type="color" id="bannerColor">
+                        </div>
+                        <div>
+                            <div id="save" onclick="save()">Save</div>
+                        </div>
+                    </div>
                 </div>
 
-
-                <div id="profilePop">
-                    <div style="display: flex; align-items: center;"><img src="" alt="" id="profileIcon">
-                        <h2 id="user"></h2>
-                    </div><button id="follow"></button>
-                    <div style="display: flex;">
-                        <div id="status"></div>
-                    </div>
-                    <div id="personalProfile">
-                        <input type="text" placeholder="Bio" id="statusInp"><button onclick="setBio()">Set bio</button>
-                    </div>
-                    <div style="display: flex;">followers: <div id="followers"></div>
-                    </div>
-                    <div style="display: flex;">following: <div id="following"></div>
-                    </div><button onclick="names()">Names/Numbers</button>
-                    <div style="display: flex;">quacks: <div id="quacks"></div>
-                    </div>
-
-
-                    <button>Close</button>
-
-                </div>
                 <div id="quacks">
                 </div>
             </div>
             <div class="sideRight sticky">
                 <div id="searchbar">
-                    <img src="bilder/search.png" alt="" id="greySearch"><img src="bilder/searchI.png" alt="" id="greenSearch"><input type="text" placeholder="Search Quacker" id="searchInput">
+                    <img src="bilder/search.png" alt="" id="greySearch"><img src="bilder/searchI.png" alt=""
+                        id="greenSearch"><input type="text" placeholder="Search Quacker" id="searchInput">
                 </div>
                 <div id="toFollow">
 
@@ -90,6 +82,6 @@
 
 </body>
 <script src="twitter.js"></script>
-<script src="index.js"></script>
+<script src="setting.js"></script>
 
 </html>
