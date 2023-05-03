@@ -196,6 +196,7 @@ function createReply() {
     theQuack.comments.push(quackId);
     localStorage.setItem("userData", JSON.stringify(userData));
     quack.value = "";
+    window.location.reload();
 }
 function accessQuack(e) {
     localStorage.quack =  e.currentTarget.id;

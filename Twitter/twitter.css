@@ -1,6 +1,8 @@
 body{
     margin: 0;
     background-color: black;
+    color: white;
+    font-family: helvetica;
 }
 .container{
     margin: 0px;
@@ -10,8 +12,8 @@ body{
     width: 100%;
 }
 *{
-    color: white;
-    font-family: helvetica;
+    color: inherit;
+    font-family: inherit;
 }
 #main{
     display: flex;
