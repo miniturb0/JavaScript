@@ -36,6 +36,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
     let theFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
     let quacks = [];
     for (let i = 0; i < theFollowing.length; i++) {
+        // endre er sånn at HVER QUACK blir oushet in for her blir en array pushet inn istedenfor individeulle quacks.
        quacks.push(theFollowing[i].quacks);
     }
     for (let i = 0; i < quacks.length; i++) {
