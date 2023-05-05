@@ -18,7 +18,7 @@ likes.innerHTML = quack.likes.length;
 replies.innerHTML = quack.comments.length;
 
 for (let i = 0; i < quack.comments.length; i++) {
-    let username = quack.comments[i].slice(0,-1);
+    let username = quack.comments[i].replace(/\d+$/, "");
     let user = userData.find(u => u.username == username);
     let quackFromId = user.quacks.find(t => t.id == quack.comments[i])
     // koden under gjør at jeg kan appende stringen

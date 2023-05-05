@@ -17,7 +17,7 @@ body{
 }
 #main{
     display: flex;
-    height: 160vh;
+    height: 100%;
     max-width: 1450px;
     width: fit-content;
     margin-left: auto;
@@ -30,6 +30,7 @@ body{
     width: 650px;
     z-index: 2;
     height: 100%;
+    min-height: 100vh;
 }
 .sideLeft{
     background-color: black;
