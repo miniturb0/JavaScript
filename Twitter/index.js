@@ -43,13 +43,17 @@ if (sessionStorage.forYouFollowing == "forYou") {
     let quacks = [];
     for (let i = 0; i < theFollowing.length; i++) {
         // endre er sånn at HVER QUACK blir pushet in for her blir en array pushet inn istedenfor individeulle quacks.
-        for (let j = 0; j < theFollowing[i].quacks.length; j++) {
-            quacks.push(theFollowing[i].quacks[j]);
+        let theFollowingUser = userData.find(u => u.username == theFollowing[i])
+        for (let j = 0; j < theFollowingUser.quacks.length; j++) {
+            quacks.push(theFollowingUser.quacks[j]);
         }
     }
+    console.log(quacks)
+    console.log(shuffleArray(quacks))
+    quacks = shuffleArray(quacks);
     for (let i = 0; i < quacks.length; i++) {
-        let quacks = shuffleArray(quacks);
-        let username = quacks[randIndex].id.slice(0,-1);
+        let userData = JSON.parse(localStorage.getItem("userData"));
+        let username = quacks[i].id.slice(0,-1);
         let user = userData.find(u => u.username == username);
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
@@ -59,26 +63,16 @@ if (sessionStorage.forYouFollowing == "forYou") {
                     <div class="quacksUsername">${user.displayname}</div>
                     <div class="quacksAt">@${user.username}</div>
                 </div>
-                <div class="quacksInside" id="${quacks[randIndex].id}" slot="${user.username}">${quacks[randIndex].quack}</div>
+                <div class="quacksInside" id="${quacks[i].id}" slot="${user.username}">${quacks[i].quack}</div>
             </div>
             </div>
             <div class="quacksBottom">
-                <div><img src="bilder/twitterLike.png" alt=""><div class="likes">${quacks[randIndex].likes.length}</div></div>
-                <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${quacks[randIndex].comments.length}</div></div>
+                <div><img src="bilder/twitterLike.png" alt=""><div class="likes">${quacks[i].likes.length}</div></div>
+                <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${quacks[i].comments.length}</div></div>
             </div>
         </div>`);
         document.querySelector(".quacks").appendChild(tet);
-
-
-
-
-
-        quacks.slice(randIndex,1);
     }
-
-
-
-
 } else {
     forYou.style.color = "#71767b";
     following.style.color = "white";
