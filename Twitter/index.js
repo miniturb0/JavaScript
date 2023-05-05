@@ -25,7 +25,13 @@ function forYouFollowing(e) {
         sessionStorage.forYouFollowing = "following";
     }
 }
-
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 
 
@@ -36,12 +42,14 @@ if (sessionStorage.forYouFollowing == "forYou") {
     let theFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
     let quacks = [];
     for (let i = 0; i < theFollowing.length; i++) {
-        // endre er sånn at HVER QUACK blir oushet in for her blir en array pushet inn istedenfor individeulle quacks.
-       quacks.push(theFollowing[i].quacks);
+        // endre er sånn at HVER QUACK blir pushet in for her blir en array pushet inn istedenfor individeulle quacks.
+        for (let j = 0; j < theFollowing[i].quacks.length; j++) {
+            quacks.push(theFollowing[i].quacks[j]);
+        }
     }
     for (let i = 0; i < quacks.length; i++) {
-        let randIndex = Math.floor(Math.random()*(theFollowing.length-i));
-        let username = quack[randIndex].id.slice(0,-1);
+        let quacks = shuffleArray(quacks);
+        let username = quacks[randIndex].id.slice(0,-1);
         let user = userData.find(u => u.username == username);
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
