@@ -9,22 +9,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P">
 </head>
 <body>
-    <div id="mid">
-        <div id="topM" style="width: 100%;">
-        <img src="bilder/Duck-Logo.png" alt="" id="topMLogo">
-        <h1 id="TopMTitle">Quacker</h1>
+    <div id="loginContainer">
+        <div id="inputs">
+            <img src="bilder/duck.png" alt="">
+            <h1>Log in to Quacker</h1>
+            <input type="text" placeholder="Username" maxlength="15" class="inp">
+            <input type="password" placeholder="Password" maxlength="50" class="inp">
+            <button id="loginSignup" onclick="signup()">Sign up</button>
+            <a href="login.html">Ready to log in? Click here!</a>
+            <div id="feilmelding"></div>
         </div>
+
+
     </div>
 
-    <div id="logIn">
-    <input type="text" pattern="[a-zA-Z]*" placeholder="Username" class="type inp">
-    <input type="password" placeholder="Password" class="type inp">
-    <input type="radio" name="gender" class="inp"><label for="">man</label>
-    <input type="radio" name="gender" class="inp"><label for="">woman</label>
-    <button onclick="signup()" class="in">Sign up</button>
-    <a href="login.html">Want to log in? Click here!</a>
-    <div id="feilmelding"></div>
-    </div>
 </body>
 <script src="logingSignup.js"></script>
 </html>

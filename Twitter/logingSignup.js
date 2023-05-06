@@ -2,18 +2,25 @@ let inp = document.querySelectorAll(".inp");
 let feilm = document.querySelector("#feilmelding");
 let profile = document.querySelector("#profile");
 // funksjon som skal lage et objekt
-function obj(un,pw,g) {
+function obj(un,pw) {
     this.username = un;
     this.displayname = un;
     this.password = pw;
-    this.gender = g;
     this.followers = [];
     this.following = [];
     this.bio = "alive";
     this.quacks = [];
     this.like = [];
     this.banner = "#389941";
+    this.profilePicture = "Macaiyla.png"
 }
+// koden gjør at det ikke kan bli skrevet inn mellomrom i input feltet
+inp[0].addEventListener('keydown', (e) => {
+    if (e.keyCode == 32) {
+      e.preventDefault();
+    }
+});
+
 function login() {
     let data = JSON.parse(localStorage.getItem("userData")) || [];
     for (let i = 0; i < data.length; i++) {
@@ -40,15 +47,8 @@ function signup() {
     }
     let un = inp[0].value;
     let pw = inp[1].value;
-    let g ="male";
-    if (inp[3].checked == false && inp[2].checked == false) {
-        feilm.innerHTML = "choose gender";
-        return
-    }
-    if (inp[3].checked) {
-        g = "female";
-    }
-    let newUser = new obj(un, pw, g);
+    
+    let newUser = new obj(un, pw);
 // får error hvis den parser null som man får i tilfelle hvor localStorage.userData er null eller undefined så || gjør at hvis den er false så gjør den neste
     let existingData = JSON.parse(localStorage.getItem("userData")) || [];
     existingData.push(newUser);
@@ -56,6 +56,4 @@ function signup() {
     feilm.innerHTML = `You have created an account ${inp[0].value}`;
     inp[0].value = "";
     inp[1].value = "";
-    inp[2].checked = false;
-    inp[3].checked = false;
 }

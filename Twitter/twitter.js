@@ -103,7 +103,7 @@ function search() {
         // gjøre mulig å appende searched user videre med koden under
         let searchedUser = document.createRange().createContextualFragment(
         `<div class="searchResultsContainer">
-            <img src="bilder/LOTR.png" alt="">
+            <img src="bilder/${filteredPeople[i].profilePicture}" alt="">
             <div class="quacksUsernameAtReply">
                 <div>
                     <div class="quacksUsernameReply">${filteredPeople[i].displayname}</div>

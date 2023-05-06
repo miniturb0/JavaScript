@@ -44,7 +44,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
         let user = userData.find(u => u.username == username);
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
-            <img src="bilder/LOTR.png" alt="">
+            <img src="bilder/${user.profilePicture}" alt="">
             <div class="quacksUsernameAt">
                 <div class="quacksUsernameAtOnly">
                     <div class="quacksUsername">${user.displayname}</div>
@@ -81,7 +81,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
         let user = userData.find(u => u.username == username);
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
-            <img src="bilder/LOTR.png" alt="">
+            <img src="bilder/${user.profilePicture}" alt="">
             <div class="quacksUsernameAt">
                 <div class="quacksUsernameAtOnly">
                     <div class="quacksUsername">${user.displayname}</div>

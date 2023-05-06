@@ -373,6 +373,7 @@ body{
     display: flex;
     width: 100%;
 }
+
 .searchResultsContainer{
     display: flex;
     width: 100% ;
@@ -398,7 +399,7 @@ body{
 }
 
 
-.quacksContainer img {
+.quacksContainer #profilePicture, .quacksContainer img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -540,47 +541,52 @@ body{
         margin-top: 10px;
     }
 }
-#logIn{
+
+#loginContainer{
+    margin-top: 20px;
+    max-width: 600px;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    margin-top: 13vh;  
 }
-.type{
-    height: 5vh;
-    display: block;
-    margin-bottom: 1vh;
-    background-color: black;
-    color: white;
-    font-size: 2.5vh;
-    width: 100%;
-    border: solid 1px transparent;
+#inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.type::placeholder{
-    color: white;
-    font-size: 2.5vh;
-    transition: 0.5s;
-}
-.type:focus{
-    border: #389941 solid 1px;
-    outline: none;
-}
-.in{
-    display: block;
-    width: 100%;
-    background-color: #389941;
-    border: none;
-    border-radius: 3vh;
-    color: white;
-    font-weight: bold;
-    height: 6vh;
-    font-size: 2.5vh;
-    transition: 0.3s;
-}
-.in:hover{
-    background-color: #2fb83d;
-}
+#inputs img{
+    height: 60px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
 
+}
+#inputs img:hover{
+    background-color: #181818;
+    
+}
+#loginContainer input{
+    border: solid #389941 2px;
+    margin-bottom: 5px;
+    width: 100%;
+    outline: none;
+    color: white;
+    background: none;
+    height: 35px;
+    font-size: 22px;
+    border-radius: 3px;
+}
+#loginSignup{
+    width: 80%;
+    border: none;
+    background-color: #389941;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
 
 
 

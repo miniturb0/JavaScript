@@ -10,21 +10,22 @@
 </head>
 
 <body>
-    
-    <div id="mid">
-        <div id="topM" style="width: 100%;">
-        <img src="bilder/Duck-Logo.png" alt="" id="topMLogo">
-        <h1 id="TopMTitle">Quacker</h1>
+    <div id="loginContainer">
+        <div id="inputs">
+            <img src="bilder/duck.png" alt="">
+            <h1>Log in to Quacker</h1>
+            <input type="text" placeholder="Username" maxlength="15" class="inp">
+            <input type="password" placeholder="Password" maxlength="50" class="inp">
+            <button id="loginSignup" onclick="login()">Log in</button>
+            <a href="signup.html">Don't have an account? Sign up here!</a>
+            <div id="feilmelding"></div>
         </div>
+
+
     </div>
 
-    <div id="logIn">
-    <input type="text" placeholder="Username" class="type inp">
-    <input type="password" placeholder="Password" class="type inp">
-    <button onclick="login()" class="in">Log in</button>
-    <a href="signup.html">Don't have an account? Create one here!</a>
-    <div id="feilmelding"></div>
-    </div>
+
+    
 </body>
 <script src="logingSignup.js"></script>
 </html>

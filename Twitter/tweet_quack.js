@@ -9,6 +9,8 @@ let userData = JSON.parse(localStorage.getItem("userData"));
 let quackT = document.querySelector("#quackTR");
 let userQuacks = userData.find(q => q.username == localStorage.quackProfile).quacks;
 let quack = userQuacks.find(q => q.id == localStorage.quack);
+let profilePic = document.querySelector("#profilePicture");
+profilePic.src = `bilder/${userData.find(u => u.username == localStorage.quackProfile).profilePicture}`;
 quacksUsername.innerHTML = userData.find(u=>u.username==localStorage.quackProfile).displayname;
 usernameAt.addEventListener("click", accessProfileQuack);
 quacksAt.innerHTML = `@${localStorage.quackProfile}`;
@@ -24,7 +26,7 @@ for (let i = 0; i < quack.comments.length; i++) {
     // koden under gjør at jeg kan appende stringen
     let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
-            <img src="bilder/LOTR.png" alt="">
+            <img src="bilder/${user.profilePicture}" alt="">
             <div class="quacksUsernameAt">
                 <div class="quacksUsernameAtOnly">
                     <div class="quacksUsername">${user.displayname}</div>
