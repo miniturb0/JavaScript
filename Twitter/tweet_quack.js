@@ -6,7 +6,7 @@ let likes = document.querySelector(".likes");
 let replies = document.querySelector(".replies");
 let quackTweets = document.querySelectorAll(".quacks");
 let userData = JSON.parse(localStorage.getItem("userData"));
-let quackT = document.querySelector("#quackT");
+let quackT = document.querySelector("#quackTR");
 let userQuacks = userData.find(q => q.username == localStorage.quackProfile).quacks;
 let quack = userQuacks.find(q => q.id == localStorage.quack);
 quacksUsername.innerHTML = userData.find(u=>u.username==localStorage.quackProfile).displayname;
@@ -38,18 +38,18 @@ for (let i = 0; i < quack.comments.length; i++) {
                 <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${quackFromId.comments.length}</div></div>
             </div>
         </div>`);
-    quackTweets[1].appendChild(tet)
+    quackTweets[1].appendChild(tet);
 }
 quacksInside = document.querySelectorAll(".quacksInside");
 let usernameAtOnly = document.querySelectorAll(".quacksUsernameAtOnly");
 for (let i = 0; i < usernameAtOnly.length; i++) {
-    usernameAtOnly[i].addEventListener("click",accessProfile)
+    usernameAtOnly[i].addEventListener("click",accessProfile);
 }
 for (let i = 0; i < quacksInside.length; i++) {
-    quacksInside[i].addEventListener("click",accessQuack)
+    quacksInside[i].addEventListener("click",accessQuack);
 }
 function accessQuack(e) {
     localStorage.quack =  e.currentTarget.id;
     localStorage.quackProfile = e.currentTarget.slot;
-    location.href = "tweet_quack.html"
+    location.href = "tweet_quack.html";
 }

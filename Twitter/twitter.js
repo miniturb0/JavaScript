@@ -14,21 +14,6 @@ window.onload = function () {
         profile.innerHTML = localStorage.loggedIn;
     }
 }
-// let toFollow = document.querySelector("#toFollow");
-// let Data = JSON.parse(localStorage.getItem("userData"));
-// for (let i = 0; i < Data.length; i++) {
-//     let divC = document.createElement("div");
-//     divC.innerHTML = Data[i].username
-//     divC.addEventListener("click", () => {
-//         localStorage.profile = divC.innerHTML
-//         location.href = "profile.html"
-//     })
-//     toFollow.appendChild(divC)
-// }
-
-// bruke e.target.getElementsByTagName("div") for å muligens gjøre click area
-// større, da må også endre index.js kode for å lage en div rundt både img og username
-
 
 // funksjon som lager et objekt med en default parameter som blir original hvis den ikke blir bestemt når funkjsoin blir utført
 function quackObj(text,creator,number,form) {
@@ -50,7 +35,7 @@ function createQuack() {
     quack.value = "";
 }
 function createReply() {
-    let quack = document.querySelector("#quackT");
+    let quack = document.querySelector("#quackTR");
     if (quack.value == "") return
     let userData = JSON.parse(localStorage.getItem("userData"));
     // u.findIndex finner indexen for meg istedenfor at jeg bruker for løkke og if statement
@@ -129,10 +114,34 @@ function search() {
         </div>`
         )
         displayDivs[i].appendChild(searchedUser);
-        displayDivs[i].addEventListener("click",accessProfileQuack)
+        displayDivs[i].addEventListener("click",accessProfileQuack);
     }
 }
 searchInput.addEventListener("input", search);
+
+function likeQuack(e) {
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let id = e.currentTarget.parentElement.parentElement.querySelector(".quacksInside");
+    let quackId = id.innerHTML;
+    let user = userData.find(u => u.username == quack.replace(/\d+$/, ""));
+    let quack = user.quacks.find(q => q.id == quackId);
+    quack.push(localStorage.loggedIn);
+    console.log("o")
+
+}
+let like = document.querySelectorAll(".likes");
+for (let i = 0; i < like.length; i++) {
+    like[i].parentElement.addEventListener("click",likeQuack)
+    
+}
+let home = document.querySelector("#homeIcon");
+let settings = document.querySelector("#settingsIcon");
+let profileI = document.querySelector("#profileIcon");
+home.addEventListener("click",() => location.href = "index.html");
+settings.addEventListener("click",() => location.href = "settings.html");
+profileI.addEventListener("click",() =>{localStorage.profile = localStorage.loggedIn
+    location.href = "profile.html"});
+
 
 
 
@@ -148,3 +157,7 @@ function paramifyLink(url, json) {
     window.location.search = `${url}?${urlSearchParams.toString()}`;
     return `${url}?${urlSearchParams.toString()}`;
 }
+
+
+
+

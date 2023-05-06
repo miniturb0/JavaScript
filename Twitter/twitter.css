@@ -74,6 +74,9 @@ body{
 .sideLeft > div:hover{
     background-color: #181818;
 }
+.pageFocus{
+    background-color: #181818;
+}
 .sideLeft img{
     height: 30px;
     margin-right: 15px;
@@ -577,18 +580,10 @@ body{
 .in:hover{
     background-color: #2fb83d;
 }
-#profilePop{
-    background-color: black;
-    width: 100%;
-    display: none;
-    border-bottom: #657786 solid 1px;
-}
-#profilePop img{
-    height: 4vh;
-}
-#personalProfile{
-    display: none;
-}
+
+
+
+
 #quack{
     display: flex;
     justify-content: center;
@@ -611,6 +606,38 @@ body{
     font-size: 17px ;
 }
 #quackT{
+    background-color: black;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: #389941 solid;
+    outline: none;
+    color: white;
+    font-size: 20px;
+}
+#quackR{
+    display: flex;
+    justify-content: center;
+    height:90px;
+    width: 100%;
+    border-bottom: #2f3336 solid 1px;
+}
+#quackR > div{
+    display: flex;
+    align-items: center;
+}
+#quackLR{
+    background-color: #389941;
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    width: 80px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px ;
+    align-self: center;
+}
+#quackTR{
     background-color: black;
     width: 100%;
     height: 40px;
