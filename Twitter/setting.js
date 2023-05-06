@@ -6,6 +6,8 @@ bannerColor.value = userData.find(u => u.username==localStorage.loggedIn).banner
 name.value = userData.find(u => u.username==localStorage.loggedIn).displayname;
 bio.value = userData.find(u => u.username==localStorage.loggedIn).bio;
 function save() {
+    let check = name.value.trim();
+    if (check == "") return;
     let user = userData.find(u => u.username == localStorage.loggedIn);
     user.banner = bannerColor.value;
     user.displayname = name.value;

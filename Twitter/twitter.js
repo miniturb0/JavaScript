@@ -105,36 +105,33 @@ function search() {
         }
         return
     }
+    let userData = JSON.parse(localStorage.getItem("userData"));
     let searchTerm = searchInput.value.toLowerCase();
-    let filteredPeople = userData.filter(u => u.username.toLowerCase().includes(searchTerm)).slice(0,5);
+    let filteredPeople = userData.filter(u => u.username.toLowerCase().includes(searchTerm)).slice(0,8);
     console.log(filteredPeople)
     for (let i = 0; i < displayDivs.length; i++) {
-        displayDivs[i].innerHTML =""; 
+        displayDivs[i].innerHTML ="";
+        displayDivs[i].removeEventListener("click",accessProfileQuack)
     }
     for (let i = 0; i < filteredPeople.length; i++) {
-        displayDivs[i].innerHTML = filteredPeople[i].username;
+        filteredPeople[i].username;
+        // gjøre mulig å appende searched user videre med koden under
+        let searchedUser = document.createRange().createContextualFragment(
+        `<div class="searchResultsContainer">
+            <img src="bilder/LOTR.png" alt="">
+            <div class="quacksUsernameAtReply">
+                <div>
+                    <div class="quacksUsernameReply">${filteredPeople[i].displayname}</div>
+                    <div class="quacksAtReply" style="margin-top: 0px;">@${filteredPeople[i].username}</div>
+                </div>
+            </div>
+
+        </div>`
+        )
+        displayDivs[i].appendChild(searchedUser);
+        displayDivs[i].addEventListener("click",accessProfileQuack)
     }
-    // for (let i = 0; i < displayDivs.length; i++) {
-    //     displayDivs[i].innerHTML =""; 
-    // }
-    
-    
-
-
 }
-`<div class="quacksContainer">
-<img src="bilder/LOTR.png" alt="">
-<div class="quacksUsernameAtReply">
-    <div>
-        <div class="quacksUsernameReply">Miniturb0</div>
-        <div class="quacksAtReply">@miniturb0</div>
-    </div>
-</div>
-
-</div>`
-
-
-
 searchInput.addEventListener("input", search);
 
 

@@ -33,7 +33,6 @@ if (sessionStorage.forYouFollowing == "forYou") {
     forYou.style.borderBottom = "solid #389941 3px";
     forYou.style.color = "white";
     following.style.color = "#71767b";
-
     let quacks = [];
     for (let i = 0; i < userData.length; i++) {
         quacks = quacks.concat(...userData[i].quacks.filter(q => q.isComment == false))
@@ -61,7 +60,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
         </div>`);
         document.querySelector(".quacks").appendChild(tet);
     }
-} else {
+}else{
     forYou.style.color = "#71767b";
     following.style.color = "white";
     following.style.borderBottom = "solid #389941 3px";
