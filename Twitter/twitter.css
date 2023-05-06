@@ -124,14 +124,7 @@ body{
 #searchbar:focus-within #greySearch{
     display: none;
 }
-#toFollow{
-    margin-left: 15px;
-    margin-top: 10px;
-    border-radius: 25px;
-    width: 90%;
-    background-color: #202327;
-    height: 500px;
-}
+
 #quackLarge{
     width:85%;
     display: flex;
@@ -377,6 +370,28 @@ body{
     display: flex;
     width: 100%;
 }
+#searchResultsContainer{
+    display: flex;
+    width: fit-content;
+}
+#searchResultsContainer img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: 0px;
+}
+#searchResults{
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 25px;
+    width: 90%;
+    background-color: #202327;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+
 .quacksContainer img {
     height: 50px;
     width: 50px;

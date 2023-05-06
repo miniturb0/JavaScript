@@ -14,17 +14,18 @@ window.onload = function () {
         profile.innerHTML = localStorage.loggedIn;
     }
 }
-let toFollow = document.querySelector("#toFollow");
-let Data = JSON.parse(localStorage.getItem("userData"));
-for (let i = 0; i < Data.length; i++) {
-    let divC = document.createElement("div");
-    divC.innerHTML = Data[i].username
-    divC.addEventListener("click", () => {
-        localStorage.profile = divC.innerHTML
-        location.href = "profile.html"
-    })
-    toFollow.appendChild(divC)
-}
+// let toFollow = document.querySelector("#toFollow");
+// let Data = JSON.parse(localStorage.getItem("userData"));
+// for (let i = 0; i < Data.length; i++) {
+//     let divC = document.createElement("div");
+//     divC.innerHTML = Data[i].username
+//     divC.addEventListener("click", () => {
+//         localStorage.profile = divC.innerHTML
+//         location.href = "profile.html"
+//     })
+//     toFollow.appendChild(divC)
+// }
+
 // bruke e.target.getElementsByTagName("div") for å muligens gjøre click area
 // større, da må også endre index.js kode for å lage en div rundt både img og username
 
@@ -82,6 +83,8 @@ function accessProfileQuack(e) {
 
 let searchInput = document.querySelector('#searchInput');
 let searchbar = document.querySelector('#searchbar');
+
+
 searchInput.addEventListener('focus', () => {
     searchbar.classList.add('focused');
 });
@@ -89,16 +92,49 @@ searchInput.addEventListener('blur', () => {
     searchbar.classList.remove('focused');
 });
 
-
+let searchResults = document.querySelector("#searchResults");
+let displayDivs = searchResults.querySelectorAll("div");
 // dette er en søke funksjon til søke baren
 // her finner den alle objektene innenfor userData arrayen som inneholder da
 // lowercasen til søkefelt verdien, dette er for at det er lettere for folk å søke på noen
 // så man ikke bare trenger å matche alt
 function search() {
+    if (searchInput.value == ""){
+        for (let i = 0; i < displayDivs.length; i++) {
+            displayDivs[i].innerHTML = ""; 
+        }
+        return
+    }
     let searchTerm = searchInput.value.toLowerCase();
-    let filteredPeople = userData.filter(u => u.username.toLowerCase().includes(searchTerm));
+    let filteredPeople = userData.filter(u => u.username.toLowerCase().includes(searchTerm)).slice(0,5);
+    console.log(filteredPeople)
+    for (let i = 0; i < displayDivs.length; i++) {
+        displayDivs[i].innerHTML =""; 
+    }
+    for (let i = 0; i < filteredPeople.length; i++) {
+        displayDivs[i].innerHTML = filteredPeople[i].username;
+    }
+    // for (let i = 0; i < displayDivs.length; i++) {
+    //     displayDivs[i].innerHTML =""; 
+    // }
+    
+    
+
 
 }
+`<div class="quacksContainer">
+<img src="bilder/LOTR.png" alt="">
+<div class="quacksUsernameAtReply">
+    <div>
+        <div class="quacksUsernameReply">Miniturb0</div>
+        <div class="quacksAtReply">@miniturb0</div>
+    </div>
+</div>
+
+</div>`
+
+
+
 searchInput.addEventListener("input", search);
 
 
