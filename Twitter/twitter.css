@@ -682,8 +682,7 @@ body{
 #name > input{
     width: 100%;
     outline: none;
-    border: transparent 2px;
-    border: solid #2f3336 1px; 
+    border: solid #2f3336 2px; 
     color: var(--color);
     background: none;
     height: 40px;
@@ -692,7 +691,7 @@ body{
 #bio > textarea{
     width: 100%;
     outline: none;
-    border: solid #2f3336 1px; 
+    border: solid #2f3336 2px; 
     color: var(--color);
     background: none;
     height: 100px;
@@ -703,11 +702,11 @@ body{
     outline: none;
     /* border: solid #2f3336 1px; */
     padding: 0px;
-    border-radius: 50%;
     height: 50px;
     width: 50px;
     color: var(--color);
     background: none;
+    border: none;
 }
 .save{
     border-radius: 20px;
