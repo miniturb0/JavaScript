@@ -673,9 +673,16 @@ body{
     color: #71767b;
 
 }
+#name >input:focus{
+    border: #389941 solid 2px;
+}
+#bio > textarea:focus{
+    border: #389941 solid 2px;
+}
 #name > input{
     width: 100%;
     outline: none;
+    border: transparent 2px;
     border: solid #2f3336 1px; 
     color: var(--color);
     background: none;
