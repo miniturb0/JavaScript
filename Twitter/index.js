@@ -5,22 +5,17 @@ let following = document.querySelector("#following");
 forYou.addEventListener("click", forYouFollowing)
 following.addEventListener("click", forYouFollowing)
 
+// funksjonen gjør at når man trykker på forYou elementet
+// så lagrer den det i sessionStorage
 function forYouFollowing(e) {
-    forYou.style.borderBottom = "solid #389941 3px";
-    forYou.style.color = "white";
-    following.style.color = "#71767b";
-    following.style.borderBottom = "none";
     sessionStorage.forYouFollowing = "forYou";
     if (e.target.id == "following") {
-        following.style.borderBottom = "solid #389941 3px";
-        following.style.color = "white";
-        forYou.style.color = "#71767b";
-        forYou.style.borderBottom = "none";
         sessionStorage.forYouFollowing = "following";
     }
     window.location.reload()
 }
 // funksjonen gjør om rekkefølgen i arrayen tilfeldig
+// fikk den fra chatGPT
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -28,10 +23,13 @@ function shuffleArray(array) {
     }
     return array;
 }
+// koden under endrer på innholdet på siden basert på om sessionStorage er forYou
+// altså den tar enten alle quacks og appender det på siden eller bare de du følger
 if (sessionStorage.forYouFollowing == "forYou") {
     let userData = JSON.parse(localStorage.getItem("userData"));
     forYou.style.borderBottom = "solid #389941 3px";
-    forYou.style.color = "white";
+    // denne koden under tar en variabel fra css
+    forYou.style.color = getComputedStyle(document.documentElement).getPropertyValue('--color');
     following.style.color = "#71767b";
     let quacks = [];
     for (let i = 0; i < userData.length; i++) {
@@ -42,6 +40,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
         // koden under fjerner alle tall på slutten av stringen
         let username = quacks[i].id.replace(/\d+$/, "");
         let user = userData.find(u => u.username == username);
+        // document.createRange().createContectualFragment gjør at jeg kan appende stringen videre
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
             <img src="bilder/${user.profilePicture}" alt="">
@@ -54,7 +53,6 @@ if (sessionStorage.forYouFollowing == "forYou") {
             </div>
             </div>
             <div class="quacksBottom">
-                <div><img src="bilder/twitterLike.png" alt=""><div class="likes">${quacks[i].likes.length}</div></div>
                 <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${quacks[i].comments.length}</div></div>
             </div>
         </div>`);
@@ -62,8 +60,10 @@ if (sessionStorage.forYouFollowing == "forYou") {
     }
 }else{
     forYou.style.color = "#71767b";
-    following.style.color = "white";
+    // tar variabel fra css igjen
+    following.style.color = getComputedStyle(document.documentElement).getPropertyValue('--color');
     following.style.borderBottom = "solid #389941 3px";
+    // userData.find(u => u.username == localStorage.loggedIn) finner det første objektet i arrayen som har username lik localStorage.loggedIn
     let theFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
     let quacks = [];
     for (let i = 0; i < theFollowing.length; i++) {
@@ -79,6 +79,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
         // koden under fjerner alle tall på slutten av stringen
         let username = quacks[i].id.replace(/\d+$/, "");
         let user = userData.find(u => u.username == username);
+        // under bruker jeg en måte å skrive string på hvor man har ${}hvor man kan skrive variabler i og `` rundt for å si at det inni er string
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
             <img src="bilder/${user.profilePicture}" alt="">

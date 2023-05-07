@@ -12,7 +12,7 @@ function obj(un,pw) {
     this.quacks = [];
     this.like = [];
     this.banner = "#389941";
-    this.profilePicture = "Macaiyla.png"
+    this.profilePicture = "LinusTech.png"
 }
 // koden gjør at det ikke kan bli skrevet inn mellomrom i input feltet
 inp[0].addEventListener('keydown', (e) => {
@@ -20,7 +20,7 @@ inp[0].addEventListener('keydown', (e) => {
       e.preventDefault();
     }
 });
-
+//
 function login() {
     let data = JSON.parse(localStorage.getItem("userData")) || [];
     for (let i = 0; i < data.length; i++) {

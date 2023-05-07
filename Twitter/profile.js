@@ -20,6 +20,7 @@ if (localStorage.profile == localStorage.loggedIn) {
     followButton.style.display = "none";
     editProfile.style.display = "block";
 }
+// legger til follow knapp eller unfollow basert på om du allerede følger profilen
 if (userData.find(u => u.username == localStorage.profile).followers.indexOf(localStorage.loggedIn) == -1) {
     followButton.addEventListener("click", follow)
     followButton.innerHTML = "Follow"
@@ -27,29 +28,25 @@ if (userData.find(u => u.username == localStorage.profile).followers.indexOf(loc
     followButton.addEventListener("click", unfollow)
     followButton.innerHTML = "Unfollow"
 }
+// funksjonen gjør at du følger noen, legger det til i localStrage
 function follow() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     let addFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
     let addFollower = userData.find(u => u.username == localStorage.profile).followers;
     addFollowing.push(localStorage.profile);
     addFollower.push(localStorage.loggedIn);
-    followButton.innerHTML = "Unfollow";
     localStorage.setItem("userData", JSON.stringify(userData));
     window.location.reload()
-    // followButton.removeEventListener("click",follow);
-    // followButton.addEventListener("click",unfollow);
 }
+// funksjonen gjør at du unfollower en profil, fjerner da informasjonen fra localStorage
 function unfollow() {
     let userData = JSON.parse(localStorage.getItem("userData"));
     let addFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
     let addFollower = userData.find(u => u.username == localStorage.profile).followers;
     addFollowing.splice(addFollowing.indexOf(localStorage.profile), 1);
     addFollower.splice(addFollower.indexOf(localStorage.loggedin), 1);
-    followButton.innerHTML = "Follow";
     localStorage.setItem("userData", JSON.stringify(userData));
     window.location.reload()
-    // followButton.removeEventListener("click",unfollow);
-    // followButton.addEventListener("click",follow);
 }
 
 let user = userData.find(u => u.username == localStorage.profile);
@@ -61,6 +58,7 @@ banner.style.backgroundColor = user.banner;
 followersFollowing[0].innerHTML = user.following.length;
 followersFollowing[1].innerHTML = user.followers.length;
 // koden nedenfor gjør at stringen jeg bruker kan bli appended videre
+// her blir alle quacksene til profilen laget og appendet til siden
 for (let j = 0; j < user.quacks.length; j++) {
     let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
@@ -74,7 +72,6 @@ for (let j = 0; j < user.quacks.length; j++) {
             </div>
             </div>
             <div class="quacksBottom">
-                <div><img src="bilder/twitterLike.png" alt=""><div class="likes">${user.quacks[j].likes.length}</div></div>
                 <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${user.quacks[j].comments.length}</div></div>
             </div>
         </div>`);

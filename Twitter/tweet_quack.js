@@ -2,7 +2,6 @@ let usernameAt = document.querySelector(".quacksUsernameAtReply");
 let quacksUsername = document.querySelector(".quacksUsernameReply");
 let quacksAt = document.querySelector(".quacksAtReply");
 let quacksInside = document.querySelector(".quacksInsideReply");
-let likes = document.querySelector(".likes");
 let replies = document.querySelector(".replies");
 let quackTweets = document.querySelectorAll(".quacks");
 let userData = JSON.parse(localStorage.getItem("userData"));
@@ -14,9 +13,9 @@ profilePic.src = `bilder/${userData.find(u => u.username == localStorage.quackPr
 quacksUsername.innerHTML = userData.find(u=>u.username==localStorage.quackProfile).displayname;
 usernameAt.addEventListener("click", accessProfileQuack);
 quacksAt.innerHTML = `@${localStorage.quackProfile}`;
+// legger til enda en eventlistener for hvis man trykker enter
 quackT.addEventListener("keyup",(e) => {if(e.key ==="Enter") createReply()})
 quacksInside.innerHTML = quack.quack;
-likes.innerHTML = quack.likes.length;
 replies.innerHTML = quack.comments.length;
 
 for (let i = 0; i < quack.comments.length; i++) {
@@ -36,7 +35,6 @@ for (let i = 0; i < quack.comments.length; i++) {
             </div>
             </div>
             <div class="quacksBottom">
-                <div><img src="bilder/twitterLike.png" alt=""><div class="likes">${quackFromId.likes.length}</div></div>
                 <div><img src="bilder/twitterReply.png" alt=""><div class="replies">${quackFromId.comments.length}</div></div>
             </div>
         </div>`);

@@ -1,13 +1,21 @@
+:root {
+    --background-color: black;
+    --backgroundSee-color:rgba(0, 0, 0,0.90);
+    --color:white;
+    --background-colorOp:white;
+    --colorOp:black;
+  }
+
 body{
     margin: 0;
-    background-color: black;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--color);
     font-family: helvetica;
 }
 .container{
     margin: 0px;
-    color: white;
-    background-color: black; 
+    color: var(--color);
+    background-color: var(--background-color); 
     max-width: 1450px;
     width: fit-content;
 }
@@ -24,7 +32,7 @@ body{
     margin-right: auto;
 }
 #mid{
-    background-color: black;
+    background-color: var(--background-color);
     border-left: solid #2f3336 1px;
     border-right: solid #2f3336 1px;
     width: 650px;
@@ -33,7 +41,7 @@ body{
     min-height: 100vh;
 }
 .sideLeft{
-    background-color: black;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -94,7 +102,7 @@ body{
 #searchInput{
     outline: none;
     border: none; 
-    color: white;
+    color: var(--color);
     background: none;
     width: 90%;
 }
@@ -148,7 +156,7 @@ body{
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0,0.90);
+    background-color: var(--backgroundSee-color);
     font-weight: bold;
     cursor: pointer;
     z-index: 1;
@@ -173,7 +181,7 @@ body{
     display: flex;
     position: sticky;
     top: 0;
-    background-color: rgba(0, 0, 0,0.90);
+    background-color: var(--backgroundSee-color);
     backdrop-filter: blur(4px);
 }
 #topMTweet #topMtitleHold{
@@ -231,7 +239,7 @@ body{
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0,0.90);
+    background-color: var(--backgroundSee-color);
     cursor: pointer;
     z-index: 1;
     display: flex;
@@ -274,8 +282,8 @@ body{
     padding: 10px;
     margin-top: 10px;
     margin-right: 10px;
-    background-color: white;
-    color: black;
+    background-color: var(--background-colorOp);
+    color: var(--colorOp);
     font-weight: bold;
     cursor: pointer;
 }
@@ -341,7 +349,7 @@ body{
     width: 100%;
 }
 #quacksReplies > div{
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -497,7 +505,7 @@ body{
         display: none;
     }
     .sideLeft > div, #topMLogo, #quackLarge img{
-        color: white;
+        color: var(--color);
         text-decoration: none;
         width: fit-content;
         display: flex;
@@ -570,7 +578,7 @@ body{
     margin-bottom: 5px;
     width: 100%;
     outline: none;
-    color: white;
+    color: var(--color);
     background: none;
     height: 35px;
     font-size: 22px;
@@ -607,24 +615,24 @@ body{
     border: none;
     border-radius: 15px;
     height: 25px;
-    color: white;
+    color: var(--color);
     font-weight: bold;
     font-size: 17px ;
 }
 #quackT{
-    background-color: black;
+    background-color: var(--background-color);
     width: 100%;
     height: 40px;
     border: none;
     border-bottom: #389941 solid;
     outline: none;
-    color: white;
+    color: var(--color);
     font-size: 20px;
 }
 #quackR{
     display: flex;
     justify-content: center;
-    height:90px;
+    height:65px;
     width: 100%;
     border-bottom: #2f3336 solid 1px;
 }
@@ -637,20 +645,19 @@ body{
     border: none;
     border-radius: 25px;
     height: 40px;
-    width: 80px;
-    color: white;
+    width: 90px;
+    color: var(--color);
     font-weight: bold;
     font-size: 17px ;
     align-self: center;
 }
 #quackTR{
-    background-color: black;
+    background-color: var(--background-color);
     width: 100%;
     height: 40px;
     border: none;
-    border-bottom: #389941 solid;
     outline: none;
-    color: white;
+    color: var(--color);
     font-size: 20px;
 }
 #profile{
@@ -659,6 +666,7 @@ body{
 #profileContainer{
     width: 90%;
     margin: 0px auto;
+    margin-top: 5px;
 }
 #profileContainer > div{
     width: 100%;
@@ -669,7 +677,7 @@ body{
     width: 100%;
     outline: none;
     border: solid #2f3336 1px; 
-    color: white;
+    color: var(--color);
     background: none;
     height: 40px;
     font-size: 22px;
@@ -678,7 +686,7 @@ body{
     width: 100%;
     outline: none;
     border: solid #2f3336 1px; 
-    color: white;
+    color: var(--color);
     background: none;
     height: 100px;
     font-size: 22px;
@@ -691,17 +699,30 @@ body{
     border-radius: 50%;
     height: 50px;
     width: 50px;
-    color: white;
+    color: var(--color);
     background: none;
 }
-#save{
+.save{
     border-radius: 20px;
     width: fit-content;
     padding: 10px;
     margin-top: 10px;
     margin-right: 10px;
-    background-color: white;
-    color: black;
+    background-color: var(--background-colorOp);
+    color: var(--colorOp);
     font-weight: bold;
     cursor: pointer;
+}
+#general{
+    width: 100%;
+    
+}
+#general > div{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+}
+#general > div > div{
+    margin-top: 7px;
 }
