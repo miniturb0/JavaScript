@@ -57,3 +57,16 @@ function signup() {
     inp[0].value = "";
     inp[1].value = "";
 }
+if (localStorage.theme == "light") {
+    document.documentElement.style.setProperty("--background-color", "white");
+    document.documentElement.style.setProperty("--background-colorOp", "black")
+    document.documentElement.style.setProperty("--backgroundSee-color", "rgba(255,255, 255, 255.90)");
+    document.documentElement.style.setProperty("--color", "black");
+    document.documentElement.style.setProperty("--colorOp", "white");
+} else {
+    document.documentElement.style.setProperty("--background-color", "black");
+    document.documentElement.style.setProperty("--background-colorOp", "white")
+    document.documentElement.style.setProperty("--backgroundSee-color", "rgba(0, 0, 0, 0.90)");
+    document.documentElement.style.setProperty("--color", "white");
+    document.documentElement.style.setProperty("--colorOp", "black");
+}
