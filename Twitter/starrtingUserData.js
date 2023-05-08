@@ -15,7 +15,7 @@ let startingUserData = [
                 "isComment": false
             },
             {
-                "id": "elonusk2",
+                "id": "elonmusk2",
                 "likes": [],
                 "comments": [],
                 "quack": "The data with which the Federal Reserve is making decisions has too much latency",
@@ -189,7 +189,7 @@ let startingUserData = [
                 "id": "cb_doge1",
                 "likes": [],
                 "comments": [
-                    "ElonMusk4"
+                    "elonmusk4"
                 ],
                 "quack": "Fun fact- Elon Musk's Birthday is 69 days after 4/20",
                 "isComment": false

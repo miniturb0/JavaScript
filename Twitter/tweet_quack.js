@@ -18,6 +18,7 @@ quackT.addEventListener("keyup",(e) => {if(e.key ==="Enter") createReply()})
 quacksInside.innerHTML = quack.quack;
 replies.innerHTML = quack.comments.length;
 
+// koden under appender kommentarene til en quack til siden
 for (let i = 0; i < quack.comments.length; i++) {
     let username = quack.comments[i].replace(/\d+$/, "");
     let user = userData.find(u => u.username == username);

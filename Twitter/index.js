@@ -41,6 +41,8 @@ if (sessionStorage.forYouFollowing == "forYou") {
         let username = quacks[i].id.replace(/\d+$/, "");
         let user = userData.find(u => u.username == username);
         // document.createRange().createContectualFragment gjør at jeg kan appende stringen videre
+        // console.log(user)
+        // console.log(user.profilePicture)
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
             <img src="bilder/${user.profilePicture}" alt="">
