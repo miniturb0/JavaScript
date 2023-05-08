@@ -16,6 +16,8 @@ function forYouFollowing(e) {
 }
 // funksjonen gjør om rekkefølgen i arrayen tilfeldig
 // fikk den fra chatGPT
+// starter bakerts i arrayen og bytter ut elementet i for det tilfeldige elementet j
+// dette blir gjort med [array[i], array[j]] = [array[j], array[j]]
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -33,16 +35,20 @@ if (sessionStorage.forYouFollowing == "forYou") {
     following.style.color = "#71767b";
     let quacks = [];
     for (let i = 0; i < userData.length; i++) {
+        // quacks.concat legger til innholdet i () bakerst i quacks arrayen
+        // .filter funksjonen tar alle objektene som har isComment == false og tar dem i en array
+        // ... foran userData[i].quacks.filter gjør at filter arrayen nå bare blir objekter uten array rundt
+        // så når vi da bruker .concat vil vi legge til alle objektene og ikke en array
         quacks = quacks.concat(...userData[i].quacks.filter(q => q.isComment == false))
     }
     quacks = shuffleArray(quacks)
     for (let i = 0; i < quacks.length; i++) {
         // koden under fjerner alle tall på slutten av stringen
+        // \d er hvilket som helst tall, + betyr at det skal skje en eller felere ganger
+        //  og $ står for slutten og da ,"" betyr at dette skal bli byttet ut med ingenting altså fjernet
         let username = quacks[i].id.replace(/\d+$/, "");
         let user = userData.find(u => u.username == username);
         // document.createRange().createContectualFragment gjør at jeg kan appende stringen videre
-        // console.log(user)
-        // console.log(user.profilePicture)
         let tet = document.createRange().createContextualFragment(`<div>
             <div class="quacksContainer">
             <img src="bilder/${user.profilePicture}" alt="">
@@ -62,14 +68,14 @@ if (sessionStorage.forYouFollowing == "forYou") {
     }
 }else{
     forYou.style.color = "#71767b";
-    // tar variabel fra css igjen
+    // tar variabel fra css
     following.style.color = getComputedStyle(document.documentElement).getPropertyValue('--color');
     following.style.borderBottom = "solid #389941 3px";
     // userData.find(u => u.username == localStorage.loggedIn) finner det første objektet i arrayen som har username lik localStorage.loggedIn
     let theFollowing = userData.find(u => u.username == localStorage.loggedIn).following;
+    // under tar jeg alle quacksene til alle brukerne og legger dem i arrayen quacks
     let quacks = [];
     for (let i = 0; i < theFollowing.length; i++) {
-        // endre er sånn at HVER QUACK blir pushet in for her blir en array pushet inn istedenfor individeulle quacks.
         let theFollowingUser = userData.find(u => u.username == theFollowing[i])
         for (let j = 0; j < theFollowingUser.quacks.length; j++) {
             quacks.push(theFollowingUser.quacks[j]);
@@ -79,6 +85,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
     for (let i = 0; i < quacks.length; i++) {
         let userData = JSON.parse(localStorage.getItem("userData"));
         // koden under fjerner alle tall på slutten av stringen
+        // forklaring lenger opp
         let username = quacks[i].id.replace(/\d+$/, "");
         let user = userData.find(u => u.username == username);
         // under bruker jeg en måte å skrive string på hvor man har ${}hvor man kan skrive variabler i og `` rundt for å si at det inni er string
@@ -101,6 +108,7 @@ if (sessionStorage.forYouFollowing == "forYou") {
         document.querySelector(".quacks").appendChild(tet);
     }
 }
+
 let quacksInside = document.querySelectorAll(".quacksInside");
 let usernameAtOnly = document.querySelectorAll(".quacksUsernameAtOnly");
 for (let i = 0; i < usernameAtOnly.length; i++) {
@@ -109,6 +117,9 @@ for (let i = 0; i < usernameAtOnly.length; i++) {
 for (let i = 0; i < quacksInside.length; i++) {
     quacksInside[i].addEventListener("click",accessQuack)
 }
+// funksjonen gjør at når man trykker på en tweet med funksjonen vil du bli sendt til
+// tweet_quack.html og vi vil da vite hva som blir vist på siden med å sette informasjon til tweeten
+// altså e inn i localStorage
 function accessQuack(e) {
     localStorage.quack =  e.currentTarget.id;
     localStorage.quackProfile = e.currentTarget.slot;

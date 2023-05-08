@@ -48,7 +48,7 @@ function unfollow() {
     localStorage.setItem("userData", JSON.stringify(userData));
     window.location.reload()
 }
-
+// her er kode for å legge til informasjonen localStorage.profile til siden
 let user = userData.find(u => u.username == localStorage.profile);
 quacks.innerHTML = `${user.quacks.length} quacks`;
 profileName.innerHTML = localStorage.profile;
@@ -86,13 +86,16 @@ for (let i = 0; i < usernameAtOnly.length; i++) {
 for (let i = 0; i < quacksInside.length; i++) {
     quacksInside[i].addEventListener("click", accessQuack)
 }
-// finner .quacksAt class og tar innerHTML med unntak av førtse symbol
-// og lagrer det i localStorage for å bruke til tweet/quack siden
+// funksjonen gjør at når man trykker på en tweet med funksjonen vil du bli sendt til
+// tweet_quack.html og vi vil da vite hva som blir vist på siden med å sette informasjon til tweeten
+// altså e inn i localStorage
 function accessQuack(e) {
     localStorage.quack = e.currentTarget.id;
     localStorage.quackProfile = e.currentTarget.slot
     location.href = "tweet_quack.html"
 }
+// funksjonen blir brukt på usernames som da når trykket på vil sende deg til profile.html
+// den lagrer localStorage.profile som username, men da minus første index fordi username vil ha @ først
 function accessProfile(e) {
     localStorage.profile = e.currentTarget.querySelector(".quacksAt").innerHTML.slice(1)
     location.href = "profile.html"

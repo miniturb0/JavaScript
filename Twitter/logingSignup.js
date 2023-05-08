@@ -12,7 +12,7 @@ function obj(un,pw) {
     this.quacks = [];
     this.like = [];
     this.banner = "#389941";
-    this.profilePicture = "LinusTech.png"
+    this.profilePicture = "LOTR.png"
 }
 // koden gjør at det ikke kan bli skrevet inn mellomrom i input feltet
 inp[0].addEventListener('keydown', (e) => {
@@ -21,8 +21,9 @@ inp[0].addEventListener('keydown', (e) => {
     }
 });
 //
+// sender deg til profil siden hvis brukernavn og passord matcher
 function login() {
-    let data = JSON.parse(localStorage.getItem("userData")) || [];
+    let data = JSON.parse(localStorage.getItem("userData"));
     for (let i = 0; i < data.length; i++) {
         if (data[i].username == inp[0].value && data[i].password == inp[1].value) {
             localStorage.loggedIn = inp[0].value;
@@ -33,8 +34,9 @@ function login() {
     }
     feilm.innerHTML = "Feil brukernavn eller passord";
 }
+// lager en bruker altså lager objektet og legger det til i local Storage
 function signup() {
-    let data = JSON.parse(localStorage.getItem("userData")) || []
+    let data = JSON.parse(localStorage.getItem("userData"));
     if (inp[0].value=="" || inp[1].value=="") {
         feilm.innerHTML = "Choose both username and password";
         return
@@ -43,14 +45,14 @@ function signup() {
             continue;
         }
         feilm.innerHTML = `Username ${inp[0].value} is already taken, choose another one`;
-        return
+        return;
     }
     let un = inp[0].value;
     let pw = inp[1].value;
     
     let newUser = new obj(un, pw);
 // får error hvis den parser null som man får i tilfelle hvor localStorage.userData er null eller undefined så || gjør at hvis den er false så gjør den neste
-    let existingData = JSON.parse(localStorage.getItem("userData")) || [];
+    let existingData = JSON.parse(localStorage.getItem("userData"));
     existingData.push(newUser);
     localStorage.setItem("userData", JSON.stringify(existingData));
     feilm.innerHTML = `You have created an account ${inp[0].value}`;

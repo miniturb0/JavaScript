@@ -1,3 +1,4 @@
+// her er startverdien for localStorage.userData
 let startingUserData = [
     {
         "username": "elonmusk",

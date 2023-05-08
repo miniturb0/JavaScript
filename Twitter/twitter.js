@@ -2,7 +2,8 @@ let inp = document.querySelectorAll(".inp");
 let feilm = document.querySelector("#feilmelding");
 let profile = document.querySelector("#profile");
 let quackHref = document.querySelector("#quackLarge");
-quackHref.addEventListener("click", () => {location.href = "createQuack.html"});
+// under er det brukt arrow funksjon, fungerer egentlig som vanlig funksjon men trenger ikke nødvendigvis {}
+quackHref.addEventListener("click", () => location.href = "createQuack.html");
 let topMLogo = document.querySelector("#topMLogo");
 topMLogo.addEventListener("click", () => location.href = "index.html" );
 
@@ -11,7 +12,7 @@ topMLogo.addEventListener("click", () => location.href = "index.html" );
 // .findIndex gjør det samme, men du får indexen i arrayen ikke selve objektet
 // document.createRange().createContextualFragment bruker jeg som gjør at jeg kan skrive string og appende videre til et element
 // jeg bruker mye en annen måte å skrive string på enn "", jeg bruker `` og så ${} for variabler inni
-
+// JSON.parse og JSON.stringify blir brukt til å konverterer fram og tilbake formatet som blir brukt i localStorage
 
 // hvis man ikke er logget inn blir man sendt til login page
 if (localStorage.loggedIn == undefined && window.location.href.indexOf("signup.html") == -1 && window.location.href.indexOf("login.html") == -1) {
@@ -27,7 +28,8 @@ function quackObj(text, creator, number, form) {
     this.quack = text;
     this.isComment = form;
 }
-// funksjonen lagrer en tweet i localStorage
+// funksjonen lagrer en quack i localStorage
+// quacken blir da lagret under quacks i objektet til profilen
 function createQuack() {
     let quack = document.querySelector("#quackT");
     if (quack.value == "") return
@@ -40,6 +42,7 @@ function createQuack() {
     quack.value = "";
 }
 // denne funksjonen lager en kommentar, altså lagrer den i localStorage
+// den blir da lagret som en quack og lagret som en kommentar til quacken som blir kommentert på
 function createReply() {
     let quack = document.querySelector("#quackTR");
     if (quack.value == "") return
@@ -56,17 +59,25 @@ function createReply() {
     theQuack.comments.push(quackId);
     localStorage.setItem("userData", JSON.stringify(userData));
     quack.value = "";
+    // refresher pagen
     window.location.reload();
 }
+// funksjonen gjør at når man trykker på en tweet med funksjonen vil du bli sendt til
+// tweet_quack.html og vi vil da vite hva som blir vist på siden med å sette informasjon til tweeten
+// altså e inn i localStorage
 function accessQuack(e) {
     localStorage.quack = e.currentTarget.id;
     localStorage.quackProfile = e.currentTarget.slot;
     location.href = "tweet_quack.html"
 }
+// funksjonen blir brukt på usernames som da når trykket på vil sende deg til profile.html
+// den lagrer localStorage.profile som username, men da minus første index fordi username vil ha @ først
 function accessProfile(e) {
     localStorage.profile = e.currentTarget.querySelector(".quacksAt").innerHTML.slice(1)
     location.href = "profile.html"
 }
+// funksjonen er for særlig for tweet_quack siden hvor vi har et større område som skal være lenke til profil siden
+// her bruker vi da parentElement for å så finne elementet med username som vi da tar bort første index for username starter med @
 function accessProfileQuack(e) {
     localStorage.profile = e.target.parentElement.querySelector(".quacksAtReply").innerHTML.slice(1);
     location.href = "profile.html"
@@ -74,7 +85,6 @@ function accessProfileQuack(e) {
 
 let searchInput = document.querySelector('#searchInput');
 let searchbar = document.querySelector('#searchbar');
-
 // her bruker jeg da js for å endre i css, i css har jeg da en css for et element når den har innerfocus
 searchInput.addEventListener('focus', () => {
     searchbar.classList.add('focused');
@@ -99,6 +109,8 @@ function search() {
     }
     let userData = JSON.parse(localStorage.getItem("userData"));
     let searchTerm = searchInput.value.toLowerCase();
+    // her bruker jeg .filter funksjonen som da finner alle objektene i arrayen som da inneholder lowercases versjon av searcthTerm
+    // jeg bruker da .slice(0, 8) som gjør at vi bare beholder 8 objekter
     let filteredPeople = userData.filter(u => u.username.toLowerCase().includes(searchTerm)).slice(0, 8);
     console.log(filteredPeople)
     for (let i = 0; i < displayDivs.length; i++) {
@@ -154,7 +166,3 @@ if (localStorage.theme == "light") {
     document.documentElement.style.setProperty("--color", "white");
     document.documentElement.style.setProperty("--colorOp", "black");
 }
-
-
-
-

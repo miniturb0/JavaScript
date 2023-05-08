@@ -10,6 +10,7 @@ name.value = userData.find(u => u.username==localStorage.loggedIn).displayname;
 bio.value = userData.find(u => u.username==localStorage.loggedIn).bio;
 // funksjonen lagrer informajsonen på profil siden inn på localStorage
 function save() {
+    // starer med å sjekke om check er tom, da bruker jeg .trim som fjerner alle etterfølgende mellomrom fra starten
     let check = name.value.trim();
     if (check == "") return;
     let user = userData.find(u => u.username == localStorage.loggedIn);
@@ -24,7 +25,7 @@ let following = document.querySelector("#following");
 forYou.addEventListener("click", forYouFollowing)
 following.addEventListener("click", forYouFollowing)
 // funksjonen gjør at når man trykker på forYou elementet
-// så lagrer den det i sessionStorage
+// så lagrer den det i sessionStorage og reloader page
 function forYouFollowing(e) {
     sessionStorage.forYouFollowing = "forYou";
     if (e.target.id == "following") {
@@ -32,17 +33,17 @@ function forYouFollowing(e) {
     }
     window.location.reload()
 }
-// funksjonen lagrer dark eller light mode i localStorage
+// funksjonen lagrer dark eller light mode i localStorage og reloader page
 function saveTheme() {
     if (inputs[0].checked) {
         localStorage.theme = "dark";
-        window.location.reload();
     }else{
         localStorage.theme ="light";
-        window.location.reload();
     }
+    window.location.reload();
 }
 // funksjonen gjør at personen logger ut
+// eller mister localStorage.loggedIn
 function logout() {
     localStorage.removeItem("loggedIn");
     window.location.reload();
