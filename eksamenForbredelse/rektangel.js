@@ -3,25 +3,31 @@ let input2 = document.querySelector("#rektangel2Input");
 let rektangel1 = document.querySelector("#rektangelen1");
 let rektangel2 = document.querySelector("#rektangelen2");
 let arealet = document.querySelector("#arealet");
+let tidligereBredder = [];
 
 function lageFirkant(input) {
-    if (input1.value > 9 || input1.value < 1 || input2.value < 1 || input2.value > 9) return;
-    if (input == 1) {
-        let bredde = Number(input1.value);
-        let hoyde = 10-bredde;
-        rektangel1.style.height = `${hoyde*50}px`;
-        rektangel1.style.width = `${bredde*50}px`;
-        rektangel1.style.border = "blue solid 3px";
-        rektangel1.addEventListener("click",areal);
-    }else{
-        let bredde = Number(input2.value);
-        let hoyde = 10-bredde;
-        rektangel2.style.height = `${hoyde*50}px`;
-        rektangel2.style.width = `${bredde*50}px`;
-        rektangel2.style.border = "blue solid 3px";
-        rektangel2.addEventListener("click",areal);
+    let bredde = Number(input.value);
+    if (tidligereBredder.length == 9) {
+        arealet.innerHTML = "du har brukt opp alle bredder";
+        return;
     }
+    if (input.value > 9 || input.value < 1 || tidligereBredder.indexOf(bredde)!=-1) {
+        arealet.innerHTML = "skriv inn bredde som er mindre eller lik 9 og større elle lik 1, du kan heller ikke skrive inn samme verdi flere ganger"
+        return;
+    }
+    let rektangel = document.createElement("div");
+    tidligereBredder.push(bredde);
+    if (tidligereBredder.length == 9) {
+        arealet.innerHTML
+    }
+    let hoyde = 10-bredde;
+    rektangel.style.width = `${bredde*50}px`;
+    rektangel.style.height = `${hoyde*50}px`;
+    rektangel.style.border = "solid blue 3px";
+    rektangel.addEventListener("click",areal);
+    document.querySelector("body").appendChild(rektangel);
 }
+
 function areal(e) {
     let width = e.target.style.width;
     width = width.substring(0,width.length-1);
