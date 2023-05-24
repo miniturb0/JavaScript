@@ -2,7 +2,9 @@ let input1 = document.querySelector("#rektangel1Input");
 let input2 = document.querySelector("#rektangel2Input");
 let rektangel1 = document.querySelector("#rektangelen1");
 let rektangel2 = document.querySelector("#rektangelen2");
+let firkantInput = document.querySelectorAll(".firkantInput");
 let arealet = document.querySelector("#arealet");
+let tabell = document.querySelector("tbody");
 let tidligereBredder = [];
 
 function lageFirkant(input) {
@@ -37,4 +39,31 @@ function areal(e) {
     height = Number(height.substring(0,height.length-1));
     let areal = width*height;
     arealet.innerHTML = `${areal}`;
+}
+
+function firkantSpes() {
+    let bunn = firkantInput[0].value;
+    let topp = firkantInput[1].value;
+    let hoyde = firkantInput[2].value;
+    let forskyvning = firkantInput[3].value;
+    let type = "";
+    let areal = bunn*hoyde;
+    if (bunn == topp && bunn == hoyde && forskyvning == 0) {
+        type = "kvadrat";
+    }else if (bunn == topp && bunn != hoyde) {
+        type = "rektangel";
+    }else if (bunn == topp && forskyvning != 0) {
+        type = "parallellogram";
+    }else{
+        type = "trapes";
+        areal = (bunn+topp)/2*hoyde;
+    }
+    let tr = document.createElement("tr");
+    let list6 = [type, bunn, topp, hoyde, forskyvning, areal]
+    for (let i = 0; i < 6; i++) {
+        let td = document.createElement("td");
+        td.innerHTML = list6[i];
+        tr.appendChild(td);
+    }
+    tabell.appendChild(tr);
 }
