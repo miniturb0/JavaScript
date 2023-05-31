@@ -33,10 +33,10 @@ function lageFirkant(input) {
 function areal(e) {
     let width = e.target.style.width;
     width = width.substring(0,width.length-1);
-    width = Number(width.substring(0,width.length-1));
+    width = Number(width.substring(0,width.length-1))/50;
     let height = e.target.style.height;
     height = height.substring(0,height.length-1);
-    height = Number(height.substring(0,height.length-1));
+    height = Number(height.substring(0,height.length-1))/50;
     let areal = width*height;
     arealet.innerHTML = `${areal}`;
 }
@@ -56,7 +56,7 @@ function firkantSpes() {
         type = "parallellogram";
     }else{
         type = "trapes";
-        areal = (bunn+topp)/2*hoyde;
+        areal = ((Number(bunn)+Number(topp))/2)*hoyde;
     }
     let tr = document.createElement("tr");
     let list6 = [type, bunn, topp, hoyde, forskyvning, areal]
